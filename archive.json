@@ -1,0 +1,1046 @@
+{
+  "magic": "E!vIA5L86J2I",
+  "timestamp": "2023-01-17T01:36:51.301927+00:00",
+  "repo": "oauth-wg/oauth-cross-device-security",
+  "labels": [
+    {
+      "name": "bug",
+      "description": "Something isn't working",
+      "color": "d73a4a"
+    },
+    {
+      "name": "documentation",
+      "description": "Improvements or additions to documentation",
+      "color": "0075ca"
+    },
+    {
+      "name": "duplicate",
+      "description": "This issue or pull request already exists",
+      "color": "cfd3d7"
+    },
+    {
+      "name": "enhancement",
+      "description": "New feature or request",
+      "color": "a2eeef"
+    },
+    {
+      "name": "good first issue",
+      "description": "Good for newcomers",
+      "color": "7057ff"
+    },
+    {
+      "name": "help wanted",
+      "description": "Extra attention is needed",
+      "color": "008672"
+    },
+    {
+      "name": "invalid",
+      "description": "This doesn't seem right",
+      "color": "e4e669"
+    },
+    {
+      "name": "question",
+      "description": "Further information is requested",
+      "color": "d876e3"
+    },
+    {
+      "name": "wontfix",
+      "description": "This will not be worked on",
+      "color": "ffffff"
+    }
+  ],
+  "issues": [
+    {
+      "number": 2,
+      "id": "I_kwDOHK26QM5T4m8J",
+      "title": "Add paragraph explaining that user is exploited, not colluding",
+      "url": "https://github.com/oauth-wg/oauth-cross-device-security/issues/2",
+      "state": "CLOSED",
+      "author": "danielfett",
+      "authorAssociation": "MEMBER",
+      "assignees": [
+        "danielfett"
+      ],
+      "labels": [],
+      "body": "",
+      "createdAt": "2022-10-13T08:12:13Z",
+      "updatedAt": "2022-10-18T14:02:47Z",
+      "closedAt": "2022-10-18T14:02:47Z",
+      "comments": [
+        {
+          "author": "PieterKas",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Accepted proposed text to clarify that this document does not cover cases where the user is colluding with an attacker.",
+          "createdAt": "2022-10-18T14:02:18Z",
+          "updatedAt": "2022-10-18T14:02:18Z"
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "id": "I_kwDOHK26QM5T4nh1",
+      "title": "Improve Example 5: Network join scenario is unclear",
+      "url": "https://github.com/oauth-wg/oauth-cross-device-security/issues/3",
+      "state": "CLOSED",
+      "author": "danielfett",
+      "authorAssociation": "MEMBER",
+      "assignees": [
+        "PieterKas"
+      ],
+      "labels": [],
+      "body": "",
+      "createdAt": "2022-10-13T08:12:59Z",
+      "updatedAt": "2022-10-18T14:21:55Z",
+      "closedAt": "2022-10-18T14:21:55Z",
+      "comments": [
+        {
+          "author": "PieterKas",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Updated example to make it clear the user is not colluding, but is tricked by the attacker.",
+          "createdAt": "2022-10-18T14:21:52Z",
+          "updatedAt": "2022-10-18T14:21:52Z"
+        }
+      ]
+    },
+    {
+      "number": 9,
+      "id": "I_kwDOHK26QM5UimqV",
+      "title": "Add another mitigation? Only display QR Codes in an authenticated session on the original device",
+      "url": "https://github.com/oauth-wg/oauth-cross-device-security/issues/9",
+      "state": "CLOSED",
+      "author": "damienbod",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "## Only display QR Codes in an authenticated session on the original device\r\n\r\n## Use Case\r\n\r\nI want to use my E-ID on a verifier website to prove my identity. If I authenticated on the correct website using a phishing resistant authentication and only after this, can I scan the QR Code to present my verifiable credentials presentation. This works good, as a lot of the website where I require a digital identity check, I already have an account and can use a phishing resistant authentication first.\r\n\r\nI could add a text for this, if you think this is a good idea.\r\n\r\nGreetings Damien\r\n",
+      "createdAt": "2022-10-21T13:37:53Z",
+      "updatedAt": "2022-11-04T14:56:21Z",
+      "closedAt": "2022-11-04T14:56:21Z",
+      "comments": [
+        {
+          "author": "PieterKas",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@damienbod I think of this as a type of \"authenticated flow\" where the user authenticated the channel before engaging in an additional cross device flow. I think it is a reasonable mitigation, would you like to take a stab at writing up a more detailed description of the attack?",
+          "createdAt": "2022-10-27T15:41:51Z",
+          "updatedAt": "2022-10-27T15:41:51Z"
+        },
+        {
+          "author": "damienbod",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "@PieterKas Thanks for the feedback. I created a PR for this:\r\n\r\nhttps://github.com/oauthstuff/draft-cross-device-security/pull/19\r\n\r\nGreetings Damien",
+          "createdAt": "2022-10-28T10:47:03Z",
+          "updatedAt": "2022-10-28T10:47:03Z"
+        }
+      ]
+    },
+    {
+      "number": 10,
+      "id": "I_kwDOHK26QM5U4BsQ",
+      "title": "Fix Transposition error for RFC 8628",
+      "url": "https://github.com/oauth-wg/oauth-cross-device-security/issues/10",
+      "state": "CLOSED",
+      "author": "PieterKas",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "From Brian Campbell: https://mailarchive.ietf.org/arch/msg/oauth/aavrWpAPxr_W2OPnAf8Q47BLCdY/\r\n\r\nAnd I just happened to notice there are a few mentions of RFC8682 (TinyMT32\r\nPseudorandom Number Generator) which should probably be RFC8628 (OAuth 2.0\r\nDevice Authorization Grant).\r\n\r\n",
+      "createdAt": "2022-10-26T12:53:58Z",
+      "updatedAt": "2022-10-26T13:43:45Z",
+      "closedAt": "2022-10-26T13:43:45Z",
+      "comments": [
+        {
+          "author": "PieterKas",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Transposition error corrected.",
+          "createdAt": "2022-10-26T13:43:45Z",
+          "updatedAt": "2022-10-26T13:43:45Z"
+        }
+      ]
+    },
+    {
+      "number": 11,
+      "id": "I_kwDOHK26QM5U4CZR",
+      "title": "Update section on CIBA",
+      "url": "https://github.com/oauth-wg/oauth-cross-device-security/issues/11",
+      "state": "CLOSED",
+      "author": "PieterKas",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "From Brian Campbell: https://mailarchive.ietf.org/arch/msg/oauth/G9Q6_NkLS4-dglXH1ztxaIZgi_w/\r\n\r\nJust want to try and clarify some things about the status of CIBA, which is\r\ndescribed somewhat erroneously as a \"standard under development.\"  There is\r\na FAPI profile of CIBA that is still under development but core CIBA\r\n<https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html>\r\nwas finalized last year.",
+      "createdAt": "2022-10-26T12:56:10Z",
+      "updatedAt": "2022-10-27T15:36:27Z",
+      "closedAt": "2022-10-27T15:36:27Z",
+      "comments": []
+    },
+    {
+      "number": 12,
+      "id": "I_kwDOHK26QM5U4DMu",
+      "title": "Provide guidance to not use cross device protocols for same device scenarios",
+      "url": "https://github.com/oauth-wg/oauth-cross-device-security/issues/12",
+      "state": "CLOSED",
+      "author": "PieterKas",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "From Joseph Heenan: https://mailarchive.ietf.org/arch/msg/oauth/KVp_Zc03vxvfDS_-R1ybDKiSXKk/\r\n\r\nI may have missed it, but it may be worth being move explicit that one solution is to avoid using cross-device flows for same-device scenarios? It\u2019s sort of obvious, but questions like \u201cwell CIBA works for both cross-device and same-device, can\u2019t I save myself effort by only implementing CIBA and not bothering with standard redirect-based OAuth flows?\u201d are commonly asked.",
+      "createdAt": "2022-10-26T12:58:34Z",
+      "updatedAt": "2022-10-27T15:19:43Z",
+      "closedAt": "2022-10-27T15:19:43Z",
+      "comments": []
+    },
+    {
+      "number": 13,
+      "id": "I_kwDOHK26QM5U4DhX",
+      "title": "Clarify push notifications for CIBA",
+      "url": "https://github.com/oauth-wg/oauth-cross-device-security/issues/13",
+      "state": "CLOSED",
+      "author": "PieterKas",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "From Joseph Heenan: https://mailarchive.ietf.org/arch/msg/oauth/KVp_Zc03vxvfDS_-R1ybDKiSXKk/\r\n\r\n\"If FIDO2/WebAuthn support is not available, Channel Initiated Backchannel Authentication (CIBA) provides an alternative, provided that the underlying devices can receive push notifications.\u201d\r\n\r\nIt might be best to use a term other than \u2018push notifications\u2019 there or otherwise rewording this, as there are alternatives. e.g. I think there\u2019s at least one CIBA implementation out there that can use email to notify the user of an authorization request.\r\n",
+      "createdAt": "2022-10-26T12:59:30Z",
+      "updatedAt": "2022-10-27T15:30:48Z",
+      "closedAt": "2022-10-27T15:30:48Z",
+      "comments": []
+    },
+    {
+      "number": 17,
+      "id": "I_kwDOHK26QM5U_Cm5",
+      "title": "Correct Typo \"Channel Initiated\" -> \"Client Initiated\"",
+      "url": "https://github.com/oauth-wg/oauth-cross-device-security/issues/17",
+      "state": "CLOSED",
+      "author": "PieterKas",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "From: https://mailarchive.ietf.org/arch/msg/oauth/ghOa788f-KfLoI8tTzrgWP8rWSA/\r\n\r\nAs an editorial note, the text referenced (section 5.2.4) by Joseph, \"If\r\nFIDO2/WebAuthn support is not available, Channel Initiated Backchannel\r\nAuthentication (CIBA) provides an alternative..\" should reference \"Client\r\nInitiated Backchannel Authentication (CIBA)\". This reference is correct in\r\nthe other sections of the document.\r\n\r\nBR,\r\nBjorn",
+      "createdAt": "2022-10-27T15:12:30Z",
+      "updatedAt": "2022-10-27T15:32:24Z",
+      "closedAt": "2022-10-27T15:32:07Z",
+      "comments": [
+        {
+          "author": "PieterKas",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Corrected typo, added contributors",
+          "createdAt": "2022-10-27T15:32:23Z",
+          "updatedAt": "2022-10-27T15:32:23Z"
+        }
+      ]
+    },
+    {
+      "number": 18,
+      "id": "I_kwDOHK26QM5VDr-6",
+      "title": "Add \"Detect and Terminate\" as a practical mitigations",
+      "url": "https://github.com/oauth-wg/oauth-cross-device-security/issues/18",
+      "state": "CLOSED",
+      "author": "PieterKas",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "It is possible to detect the same user codes being redeemed, which is likely to signifiy an attack in progress. Adding these codes toa  deny list and then terminating all sessions assositted with the tokens issued (e.g. via someithing like SSE/CAEP) to the user as a result of redeeming that specific user code stops further attacks and remediates the existing attack",
+      "createdAt": "2022-10-28T10:11:56Z",
+      "updatedAt": "2022-11-04T20:45:38Z",
+      "closedAt": "2022-11-04T20:45:38Z",
+      "comments": [
+        {
+          "author": "PieterKas",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Added Detect and remediate section",
+          "createdAt": "2022-11-04T20:45:37Z",
+          "updatedAt": "2022-11-04T20:45:37Z"
+        }
+      ]
+    },
+    {
+      "number": 21,
+      "id": "I_kwDOHK26QM5VGUzI",
+      "title": "new example: Example B7: Account takeover",
+      "url": "https://github.com/oauth-wg/oauth-cross-device-security/issues/21",
+      "state": "OPEN",
+      "author": "damienbod",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "I thought this would be another possible attack:\r\n\r\nCreating a PR for this, what do you think?\r\n\r\nPR: https://github.com/oauthstuff/draft-cross-device-security/pull/20\r\n\r\nGreetings Damien",
+      "createdAt": "2022-10-28T19:26:18Z",
+      "updatedAt": "2022-10-28T19:49:16Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 24,
+      "id": "I_kwDOHK26QM5WU4Vx",
+      "title": "Update diagram to clarify initial step \"A\"",
+      "url": "https://github.com/oauth-wg/oauth-cross-device-security/issues/24",
+      "state": "CLOSED",
+      "author": "PieterKas",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Change diagrams to have step A point back to the initiating device.",
+      "createdAt": "2022-11-14T15:52:34Z",
+      "updatedAt": "2022-11-14T20:31:26Z",
+      "closedAt": "2022-11-14T20:31:25Z",
+      "comments": [
+        {
+          "author": "PieterKas",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Updates made to figure 1.",
+          "createdAt": "2022-11-14T20:31:25Z",
+          "updatedAt": "2022-11-14T20:31:25Z"
+        }
+      ]
+    },
+    {
+      "number": 25,
+      "id": "I_kwDOHK26QM5WU49H",
+      "title": "User initiated flows",
+      "url": "https://github.com/oauth-wg/oauth-cross-device-security/issues/25",
+      "state": "CLOSED",
+      "author": "PieterKas",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Clarify that the unauthenticated channel attacks also apply to user-initiated flows",
+      "createdAt": "2022-11-14T15:53:49Z",
+      "updatedAt": "2022-11-14T21:01:42Z",
+      "closedAt": "2022-11-14T21:01:01Z",
+      "comments": [
+        {
+          "author": "PieterKas",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Updated text in \"User Initiated Flows\" commit.",
+          "createdAt": "2022-11-14T21:01:42Z",
+          "updatedAt": "2022-11-14T21:01:42Z"
+        }
+      ]
+    },
+    {
+      "number": 26,
+      "id": "I_kwDOHK26QM5WU5zk",
+      "title": "Clarify when cross device flows should be used on same device scenarios",
+      "url": "https://github.com/oauth-wg/oauth-cross-device-security/issues/26",
+      "state": "CLOSED",
+      "author": "PieterKas",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "From discussion with Kristina Yasuda\r\n\r\n[openid / connect / Pull Request #327: clarified the definition of response mode post - Issue #1626 \u2014 Bitbucket](https://bitbucket.org/openid/connect/pull-requests/327)\r\n\r\nif the same protocol allows for both same and cross device flows and there are legitimate reasons to use cross for same, same cross device protections shuold apply to same d flow\r\n\r\nif a protocol allows only for cross d, use another same d protocol",
+      "createdAt": "2022-11-14T15:55:54Z",
+      "updatedAt": "2022-11-14T22:44:26Z",
+      "closedAt": "2022-11-14T22:44:26Z",
+      "comments": [
+        {
+          "author": "PieterKas",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Updated in https://github.com/oauthstuff/draft-cross-device-security/commit/52d4129ca62131461e409b1856196544391996c9 ",
+          "createdAt": "2022-11-14T22:43:24Z",
+          "updatedAt": "2022-11-14T22:43:24Z"
+        }
+      ]
+    },
+    {
+      "number": 27,
+      "id": "I_kwDOHK26QM5WhWkL",
+      "title": "Spelling/terminology fixes",
+      "url": "https://github.com/oauth-wg/oauth-cross-device-security/issues/27",
+      "state": "CLOSED",
+      "author": "PieterKas",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "-----Original Message-----\r\nFrom: Jeremy Saklad <jeremy@saklad5.com> \r\nSent: Friday, October 21, 2022 1:00 AM\r\nTo: draft-kasselman-cross-device-security@ietf.org\r\nSubject: Mail regarding draft-kasselman-cross-device-security\r\n\r\n\r\n\r\n\r\n\r\n\r\n-----BEGIN PGP SIGNED MESSAGE-----\r\nHash: SHA512\r\n\r\nIn Section 3, point E, the word \u201cauthorization\u201d is misspelled \u201cauthroization\u201d.\r\n\r\nIn addition, the spellings \u201cartifact\u201d and \u201cartefact\u201d are both used in the current draft. According to RFC 7322, this means that all instances of \u201cartefact\u201d should be replaced with \u201cartifact\u201d for the sake of consistency.\r\n-----BEGIN PGP SIGNATURE-----\r\n\r\niMwEARYKAHQWIQST9JhYTT2FVNyHHwCUsC6j0LZIGwUCY1Hg9lYYJ2h0dHBzOi8v\r\nb3BlbnBncGtleS5zYWtsYWQ1LmNvbS9maW5nZXJwcmludC9GRERGQzRBNEE2N0Qw\r\nNEVGRkVCOEU0MjQ5Q0EyMTQ5NTgzRURCRjg0JwAKCRCUsC6j0LZIG+jnAQD+RXjM\r\n1DoN3iUbpMy6atmBfojUob/RJv9a+PUdyN5omgD/dsYjqJRKsysaSN3pBEPHdw4A\r\nH4HsOp1DDs+mqZFuCAw=\r\n=jCMu\r\n-----END PGP SIGNATURE-----\r\n\r\nAlso add Jeremy Saklad as a contributor\r\n",
+      "createdAt": "2022-11-16T13:13:52Z",
+      "updatedAt": "2022-11-21T20:49:51Z",
+      "closedAt": "2022-11-21T20:49:38Z",
+      "comments": [
+        {
+          "author": "PieterKas",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Updated",
+          "createdAt": "2022-11-21T20:49:51Z",
+          "updatedAt": "2022-11-21T20:49:51Z"
+        }
+      ]
+    },
+    {
+      "number": 28,
+      "id": "I_kwDOHK26QM5WhYnG",
+      "title": "Fix Figure 2",
+      "url": "https://github.com/oauth-wg/oauth-cross-device-security/issues/28",
+      "state": "CLOSED",
+      "author": "PieterKas",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Figure 2 is poorly drawn, and labelling is inconsistent.",
+      "createdAt": "2022-11-16T13:19:09Z",
+      "updatedAt": "2022-11-16T13:23:37Z",
+      "closedAt": "2022-11-16T13:23:37Z",
+      "comments": []
+    }
+  ],
+  "pulls": [
+    {
+      "number": 1,
+      "id": "PR_kwDOHK26QM5AtfIk",
+      "title": "V0 review",
+      "url": "https://github.com/oauth-wg/oauth-cross-device-security/pull/1",
+      "state": "MERGED",
+      "author": "danielfett",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2022-10-13T07:53:19Z",
+      "updatedAt": "2022-10-17T09:51:25Z",
+      "baseRepository": "oauth-wg/oauth-cross-device-security",
+      "baseRefName": "main",
+      "baseRefOid": "f61e73d51019dea1d4098e8af600e1865df0c874",
+      "headRepository": "oauth-wg/oauth-cross-device-security",
+      "headRefName": "danielfett/review-v0",
+      "headRefOid": "e1a69bb9791d53348a22819cd6adecf92dbd3404",
+      "closedAt": "2022-10-17T09:51:23Z",
+      "mergedAt": "2022-10-17T09:51:23Z",
+      "mergedBy": "panva",
+      "mergeCommit": {
+        "oid": "4c3cbc13d3df9bc47e492c716c2dd21259e8d63c"
+      },
+      "comments": [
+        {
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "body": "@PieterKas @panva Done with my review!",
+          "createdAt": "2022-10-14T13:55:56Z",
+          "updatedAt": "2022-10-14T13:55:56Z"
+        },
+        {
+          "author": "panva",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Thank you Daniel, I will do my review first thing monday morning.",
+          "createdAt": "2022-10-14T14:12:39Z",
+          "updatedAt": "2022-10-14T14:12:39Z"
+        }
+      ],
+      "reviews": []
+    },
+    {
+      "number": 4,
+      "id": "PR_kwDOHK26QM5A6L4o",
+      "title": "Proposal for Issue #2",
+      "url": "https://github.com/oauth-wg/oauth-cross-device-security/pull/4",
+      "state": "MERGED",
+      "author": "danielfett",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2022-10-17T08:58:56Z",
+      "updatedAt": "2022-10-18T14:00:58Z",
+      "baseRepository": "oauth-wg/oauth-cross-device-security",
+      "baseRefName": "main",
+      "baseRefOid": "f61e73d51019dea1d4098e8af600e1865df0c874",
+      "headRepository": "oauth-wg/oauth-cross-device-security",
+      "headRefName": "danielfett/out-of-scope",
+      "headRefOid": "ad34b191ac6aa11273d6b95c0fc29c6394a4e906",
+      "closedAt": "2022-10-18T14:00:58Z",
+      "mergedAt": "2022-10-18T14:00:58Z",
+      "mergedBy": "PieterKas",
+      "mergeCommit": {
+        "oid": "e6b3d64b2fd613775885f4c1aa2a9bd03db08629"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOHK26QM5ELLwj",
+          "commit": {
+            "abbreviatedOid": "ad34b19"
+          },
+          "author": "panva",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2022-10-17T09:12:30Z",
+          "updatedAt": "2022-10-17T09:12:30Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOHK26QM5ETNYM",
+          "commit": {
+            "abbreviatedOid": "ad34b19"
+          },
+          "author": "PieterKas",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2022-10-18T14:00:46Z",
+          "updatedAt": "2022-10-18T14:00:46Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "id": "PR_kwDOHK26QM5A6fMU",
+      "title": "fix typos",
+      "url": "https://github.com/oauth-wg/oauth-cross-device-security/pull/5",
+      "state": "MERGED",
+      "author": "panva",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2022-10-17T09:51:32Z",
+      "updatedAt": "2022-10-17T09:51:40Z",
+      "baseRepository": "oauth-wg/oauth-cross-device-security",
+      "baseRefName": "main",
+      "baseRefOid": "4c3cbc13d3df9bc47e492c716c2dd21259e8d63c",
+      "headRepository": "panva/draft-cross-device-security",
+      "headRefName": "filip-review",
+      "headRefOid": "9e89c66f6884711de191fb6026c52ebeadaf7ab9",
+      "closedAt": "2022-10-17T09:51:39Z",
+      "mergedAt": "2022-10-17T09:51:39Z",
+      "mergedBy": "panva",
+      "mergeCommit": {
+        "oid": "538a2167e7c99d2bb7e5a6f20879510d1587d675"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 6,
+      "id": "PR_kwDOHK26QM5BBYC-",
+      "title": "Update main.md",
+      "url": "https://github.com/oauth-wg/oauth-cross-device-security/pull/6",
+      "state": "MERGED",
+      "author": "PieterKas",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Proposed changes for Issue #3.",
+      "createdAt": "2022-10-18T14:20:07Z",
+      "updatedAt": "2022-10-18T14:20:44Z",
+      "baseRepository": "oauth-wg/oauth-cross-device-security",
+      "baseRefName": "main",
+      "baseRefOid": "e6b3d64b2fd613775885f4c1aa2a9bd03db08629",
+      "headRepository": "oauth-wg/oauth-cross-device-security",
+      "headRefName": "PieterKas-patch-1",
+      "headRefOid": "4a2ba5e1a4540e7e37feff8c87f14063cb33ff3d",
+      "closedAt": "2022-10-18T14:20:43Z",
+      "mergedAt": "2022-10-18T14:20:43Z",
+      "mergedBy": "PieterKas",
+      "mergeCommit": {
+        "oid": "4d8ff1b3a3867bb26f2ae0c72bb6562093f3fb28"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 7,
+      "id": "PR_kwDOHK26QM5BCQFs",
+      "title": "Added References to the draft, along with editorial updates",
+      "url": "https://github.com/oauth-wg/oauth-cross-device-security/pull/7",
+      "state": "MERGED",
+      "author": "PieterKas",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Added references and editorial updates",
+      "createdAt": "2022-10-18T17:22:12Z",
+      "updatedAt": "2022-10-18T17:25:51Z",
+      "baseRepository": "oauth-wg/oauth-cross-device-security",
+      "baseRefName": "main",
+      "baseRefOid": "5f1ee87af51fe2457bcbb51523c7f655c71af029",
+      "headRepository": "oauth-wg/oauth-cross-device-security",
+      "headRefName": "PieterKas-patch-2",
+      "headRefOid": "90dee52373611d82c696a24f4601c59c9836c3a2",
+      "closedAt": "2022-10-18T17:25:51Z",
+      "mergedAt": "2022-10-18T17:25:51Z",
+      "mergedBy": "PieterKas",
+      "mergeCommit": {
+        "oid": "eec72a8087c281577be24666ee101e14663ffc9a"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 8,
+      "id": "PR_kwDOHK26QM5BSSlz",
+      "title": "typo fix",
+      "url": "https://github.com/oauth-wg/oauth-cross-device-security/pull/8",
+      "state": "MERGED",
+      "author": "damienbod",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2022-10-21T13:12:29Z",
+      "updatedAt": "2022-10-26T14:42:18Z",
+      "baseRepository": "oauth-wg/oauth-cross-device-security",
+      "baseRefName": "main",
+      "baseRefOid": "b1bf63995493e19d2f35c72a317dd17e97a34a44",
+      "headRepository": "damienbod/draft-cross-device-security",
+      "headRefName": "damienbod/typo-fix",
+      "headRefOid": "f0ebd643342cb92cc42e8d6afbdb4f3d8004bca5",
+      "closedAt": "2022-10-26T14:42:17Z",
+      "mergedAt": "2022-10-26T14:42:17Z",
+      "mergedBy": "PieterKas",
+      "mergeCommit": {
+        "oid": "185b5fbb71fdda8ec461dc9ba3584f11b0788d75"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOHK26QM5E8SqI",
+          "commit": {
+            "abbreviatedOid": "f0ebd64"
+          },
+          "author": "PieterKas",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2022-10-26T14:42:07Z",
+          "updatedAt": "2022-10-26T14:42:07Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 14,
+      "id": "PR_kwDOHK26QM5BlX9x",
+      "title": "Update main.md",
+      "url": "https://github.com/oauth-wg/oauth-cross-device-security/pull/14",
+      "state": "MERGED",
+      "author": "PieterKas",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Addressing issue #13 raised by Joseph Heenan",
+      "createdAt": "2022-10-26T13:55:17Z",
+      "updatedAt": "2022-10-27T14:34:29Z",
+      "baseRepository": "oauth-wg/oauth-cross-device-security",
+      "baseRefName": "main",
+      "baseRefOid": "6d547ea4a17fc221118a329897c96d6882b2f582",
+      "headRepository": "oauth-wg/oauth-cross-device-security",
+      "headRefName": "PieterKas-patch-3",
+      "headRefOid": "6d8e60b62359ae8ad773d7f0b7d2e68f583dfe68",
+      "closedAt": "2022-10-27T14:34:29Z",
+      "mergedAt": "2022-10-27T14:34:29Z",
+      "mergedBy": "PieterKas",
+      "mergeCommit": {
+        "oid": "d49bf72579d84703ceedf7b1039589b1f583f23f"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOHK26QM5FBcEa",
+          "commit": {
+            "abbreviatedOid": "6d8e60b"
+          },
+          "author": "jogu",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2022-10-27T10:19:51Z",
+          "updatedAt": "2022-10-27T10:19:51Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 15,
+      "id": "PR_kwDOHK26QM5Bm6AT",
+      "title": "Update main.md",
+      "url": "https://github.com/oauth-wg/oauth-cross-device-security/pull/15",
+      "state": "MERGED",
+      "author": "PieterKas",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Added additional text making it clear that cross device flows should not be used for same device scenarios as suggested by Joseph Heenan (see #12 )",
+      "createdAt": "2022-10-26T18:27:26Z",
+      "updatedAt": "2022-10-27T15:29:30Z",
+      "baseRepository": "oauth-wg/oauth-cross-device-security",
+      "baseRefName": "main",
+      "baseRefOid": "20ea9d3862a293dd981e4646735a67e83a591923",
+      "headRepository": "oauth-wg/oauth-cross-device-security",
+      "headRefName": "PieterKas-patch-4",
+      "headRefOid": "8dd907fde650a204ce454c8474248c3a670e916b",
+      "closedAt": "2022-10-27T15:29:30Z",
+      "mergedAt": "2022-10-27T15:29:30Z",
+      "mergedBy": "PieterKas",
+      "mergeCommit": {
+        "oid": "313d8d1c9817a664e0926432b706d6958668936f"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOHK26QM5FBdSH",
+          "commit": {
+            "abbreviatedOid": "3bcf1a7"
+          },
+          "author": "jogu",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-10-27T10:23:39Z",
+          "updatedAt": "2022-10-27T10:23:39Z",
+          "comments": [
+            {
+              "originalPosition": 4,
+              "body": "```suggestion\r\nCross-device protocols should not be used for same-device scenarios. If the initiating device and authorization device is the same device protocols like OpenID Connect Core [@OpenID.Core] and OAuth 2.0 Authorization Code Grant as defined in [@RFC6749] are more appropriate. \r\n```\r\n('is more appropriate' -> 'are more appropriate')\r\n\r\nPossibly the final sentence should refer to https://datatracker.ietf.org/doc/html/draft-ietf-oauth-security-topics but perhaps the final sentence is also getting off topic for this document.",
+              "createdAt": "2022-10-27T10:23:39Z",
+              "updatedAt": "2022-10-27T15:26:15Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOHK26QM5FC_tw",
+          "commit": {
+            "abbreviatedOid": "3bcf1a7"
+          },
+          "author": "PieterKas",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-10-27T14:36:17Z",
+          "updatedAt": "2022-10-27T14:36:17Z",
+          "comments": [
+            {
+              "originalPosition": 4,
+              "body": "@jogu Do you want to suggest alternative text for the final sentence, or should it just be deleted?",
+              "createdAt": "2022-10-27T14:36:17Z",
+              "updatedAt": "2022-10-27T14:36:17Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOHK26QM5FDZZB",
+          "commit": {
+            "abbreviatedOid": "3bcf1a7"
+          },
+          "author": "jogu",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-10-27T15:16:24Z",
+          "updatedAt": "2022-10-27T15:16:24Z",
+          "comments": [
+            {
+              "originalPosition": 4,
+              "body": "I think I'd veer towards just deleting it.",
+              "createdAt": "2022-10-27T15:16:24Z",
+              "updatedAt": "2022-10-27T15:16:24Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 16,
+      "id": "PR_kwDOHK26QM5Bm_Uk",
+      "title": "CIBA was standardised last September",
+      "url": "https://github.com/oauth-wg/oauth-cross-device-security/pull/16",
+      "state": "MERGED",
+      "author": "PieterKas",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Added clarification that CIBA is not a standard under development, but was completed in September 2021 and added references to the completed standard.",
+      "createdAt": "2022-10-26T18:49:04Z",
+      "updatedAt": "2022-10-27T15:36:05Z",
+      "baseRepository": "oauth-wg/oauth-cross-device-security",
+      "baseRefName": "main",
+      "baseRefOid": "20ea9d3862a293dd981e4646735a67e83a591923",
+      "headRepository": "oauth-wg/oauth-cross-device-security",
+      "headRefName": "PieterKas-patch-5",
+      "headRefOid": "d3245d6ce76e41b23ae4027347dcb7fc8a8e33ea",
+      "closedAt": "2022-10-27T15:36:05Z",
+      "mergedAt": "2022-10-27T15:36:05Z",
+      "mergedBy": "PieterKas",
+      "mergeCommit": {
+        "oid": "54dedf5b079458291b7ac23a4d03862e159bf6f3"
+      },
+      "comments": [
+        {
+          "author": "PieterKas",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Refer back to issue #11 ",
+          "createdAt": "2022-10-26T18:51:00Z",
+          "updatedAt": "2022-10-26T18:51:00Z"
+        },
+        {
+          "author": "PieterKas",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Thanks for that bit of historic context Brian. I will remove those references.",
+          "createdAt": "2022-10-27T14:44:06Z",
+          "updatedAt": "2022-10-27T14:44:06Z"
+        },
+        {
+          "author": "PieterKas",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Thanks @jogu and @bc-pi - I also added you to the acknowledgment section.",
+          "createdAt": "2022-10-27T15:35:40Z",
+          "updatedAt": "2022-10-27T15:35:40Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOHK26QM5E-sqC",
+          "commit": {
+            "abbreviatedOid": "6f38af8"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "NONE",
+          "state": "CHANGES_REQUESTED",
+          "body": "CIBA core is not part of FAPI. Due to historical reasons CIBA core is actually a product of the MODRNA WG. In this context though it's probably better to leave the WG out of it and just say it's an OIDF thing. ",
+          "createdAt": "2022-10-26T21:02:56Z",
+          "updatedAt": "2022-10-27T15:17:39Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOHK26QM5FDWKf",
+          "commit": {
+            "abbreviatedOid": "d3245d6"
+          },
+          "author": "jogu",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2022-10-27T15:10:47Z",
+          "updatedAt": "2022-10-27T15:10:47Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOHK26QM5FDZv5",
+          "commit": {
+            "abbreviatedOid": "d3245d6"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "NONE",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2022-10-27T15:17:12Z",
+          "updatedAt": "2022-10-27T15:17:12Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 19,
+      "id": "PR_kwDOHK26QM5BvX4p",
+      "title": "Authenticated flow: Only display QR Codes in an authenticated session on the original device",
+      "url": "https://github.com/oauth-wg/oauth-cross-device-security/pull/19",
+      "state": "MERGED",
+      "author": "damienbod",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "fixes https://github.com/oauthstuff/draft-cross-device-security/issues/9\r\n",
+      "createdAt": "2022-10-28T10:43:22Z",
+      "updatedAt": "2022-11-04T14:56:20Z",
+      "baseRepository": "oauth-wg/oauth-cross-device-security",
+      "baseRefName": "main",
+      "baseRefOid": "54dedf5b079458291b7ac23a4d03862e159bf6f3",
+      "headRepository": "damienbod/draft-cross-device-security",
+      "headRefName": "damienbod/Only-display-QR-Codes-in-authenticated-session",
+      "headRefOid": "8689bb409228a1a0c48389ce6839fc433f98d19e",
+      "closedAt": "2022-11-04T14:56:19Z",
+      "mergedAt": "2022-11-04T14:56:19Z",
+      "mergedBy": "PieterKas",
+      "mergeCommit": {
+        "oid": "62e01aa7142e01f9a2698e1e3288c857a2f9fcce"
+      },
+      "comments": [
+        {
+          "author": "PieterKas",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Merging new mitigation proposal",
+          "createdAt": "2022-11-04T14:56:03Z",
+          "updatedAt": "2022-11-04T14:56:03Z"
+        }
+      ],
+      "reviews": []
+    },
+    {
+      "number": 20,
+      "id": "PR_kwDOHK26QM5Bxj88",
+      "title": "Add new Example B7: Account takeover",
+      "url": "https://github.com/oauth-wg/oauth-cross-device-security/pull/20",
+      "state": "OPEN",
+      "author": "damienbod",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "fixes https://github.com/oauthstuff/draft-cross-device-security/issues/21",
+      "createdAt": "2022-10-28T19:24:42Z",
+      "updatedAt": "2023-01-16T21:21:04Z",
+      "baseRepository": "oauth-wg/oauth-cross-device-security",
+      "baseRefName": "main",
+      "baseRefOid": "62e01aa7142e01f9a2698e1e3288c857a2f9fcce",
+      "headRepository": "damienbod/draft-cross-device-security",
+      "headRefName": "damienbod/example-account-takeover",
+      "headRefOid": "a0676cae33296bfb52fbf884984ebfd9169fd5bf",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [
+        {
+          "author": "PieterKas",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I think this is a valid attack. One open question is whether it is sufficiently different from the other examples. A second question is whether people should be using Verfiable Credentials for login use cases. @danielfett would love to get your opinion on this before merging.",
+          "createdAt": "2022-11-04T11:31:05Z",
+          "updatedAt": "2022-11-04T11:31:05Z"
+        },
+        {
+          "author": "damienbod",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "@danielfett  Any chance of a review? ",
+          "createdAt": "2022-11-16T19:05:06Z",
+          "updatedAt": "2022-11-16T19:05:06Z"
+        },
+        {
+          "author": "damienbod",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "@PieterKas @danielfett Any move on this? ",
+          "createdAt": "2023-01-16T21:21:04Z",
+          "updatedAt": "2023-01-16T21:21:04Z"
+        }
+      ],
+      "reviews": []
+    },
+    {
+      "number": 22,
+      "id": "PR_kwDOHK26QM5CN_5x",
+      "title": "Refined Authenticated Flow Mitigation",
+      "url": "https://github.com/oauth-wg/oauth-cross-device-security/pull/22",
+      "state": "MERGED",
+      "author": "PieterKas",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Added examples to illustrate cases when the authenticated flow is not an effective as a mitigation.",
+      "createdAt": "2022-11-04T15:10:58Z",
+      "updatedAt": "2022-11-04T20:45:04Z",
+      "baseRepository": "oauth-wg/oauth-cross-device-security",
+      "baseRefName": "main",
+      "baseRefOid": "62e01aa7142e01f9a2698e1e3288c857a2f9fcce",
+      "headRepository": "oauth-wg/oauth-cross-device-security",
+      "headRefName": "PieterKas-patch-6",
+      "headRefOid": "010203e3ba68f2fcb55f9e14cb3e3e2aa455f49c",
+      "closedAt": "2022-11-04T20:45:04Z",
+      "mergedAt": "2022-11-04T20:45:04Z",
+      "mergedBy": "PieterKas",
+      "mergeCommit": {
+        "oid": "8ae0144a2096955356e37a2d99f09d4c122fc3ff"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOHK26QM5FqZog",
+          "commit": {
+            "abbreviatedOid": "dde47dc"
+          },
+          "author": "damienbod",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-11-04T15:21:11Z",
+          "updatedAt": "2022-11-04T15:21:12Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "in to => into\r\nvomputer => computer",
+              "createdAt": "2022-11-04T15:21:12Z",
+              "updatedAt": "2022-11-04T15:21:12Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOHK26QM5Fr1-T",
+          "commit": {
+            "abbreviatedOid": "dde47dc"
+          },
+          "author": "PieterKas",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-11-04T19:48:31Z",
+          "updatedAt": "2022-11-04T19:48:32Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "Update with suggested changes.",
+              "createdAt": "2022-11-04T19:48:31Z",
+              "updatedAt": "2022-11-04T19:48:32Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOHK26QM5Fr2k6",
+          "commit": {
+            "abbreviatedOid": "dde47dc"
+          },
+          "author": "damienbod",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-11-04T19:51:13Z",
+          "updatedAt": "2022-11-04T19:51:14Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "looks great",
+              "createdAt": "2022-11-04T19:51:13Z",
+              "updatedAt": "2022-11-04T19:51:14Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOHK26QM5Fr3ck",
+          "commit": {
+            "abbreviatedOid": "010203e"
+          },
+          "author": "damienbod",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2022-11-04T19:54:54Z",
+          "updatedAt": "2022-11-04T19:54:54Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 23,
+      "id": "PR_kwDOHK26QM5CPUXp",
+      "title": "Added Detect and Remediate mitigation",
+      "url": "https://github.com/oauth-wg/oauth-cross-device-security/pull/23",
+      "state": "MERGED",
+      "author": "PieterKas",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2022-11-04T20:43:04Z",
+      "updatedAt": "2022-11-04T20:43:41Z",
+      "baseRepository": "oauth-wg/oauth-cross-device-security",
+      "baseRefName": "main",
+      "baseRefOid": "62e01aa7142e01f9a2698e1e3288c857a2f9fcce",
+      "headRepository": "oauth-wg/oauth-cross-device-security",
+      "headRefName": "PieterKas-patch-7",
+      "headRefOid": "98a84f0466d93e3178e21f3250f37df46453a937",
+      "closedAt": "2022-11-04T20:43:40Z",
+      "mergedAt": "2022-11-04T20:43:40Z",
+      "mergedBy": "PieterKas",
+      "mergeCommit": {
+        "oid": "c5fb9ba3b01ba5cdc792780dd98ef5dbf6152ebc"
+      },
+      "comments": [],
+      "reviews": []
+    }
+  ]
+}
