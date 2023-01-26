@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2023-01-17T01:36:51.301927+00:00",
+  "timestamp": "2023-01-26T01:37:37.956449+00:00",
   "repo": "oauth-wg/oauth-cross-device-security",
   "labels": [
     {
@@ -380,6 +380,46 @@
       "updatedAt": "2022-11-16T13:23:37Z",
       "closedAt": "2022-11-16T13:23:37Z",
       "comments": []
+    },
+    {
+      "number": 29,
+      "id": "I_kwDOHK26QM5cq36J",
+      "title": "Inconsistency in Example B1",
+      "url": "https://github.com/oauth-wg/oauth-cross-device-security/issues/29",
+      "state": "OPEN",
+      "author": "SECtim",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "Example B1 currently says:\r\n> The e-mail contains a message stating that the streaming service wants to thank them for their loyal support and by scanning the QR code, they will be able to add a bonus device to their account for no charge. One of the recipients open the e-mail and scan the QR code to register for early access to premium content.\r\n\r\nI.e., at first, the e-mail sent by the attacker mentions a \"bonus device\", whereas the second sentence talks about \"premium content\".\r\nIf this is intentional, I suggest adding a few words to explain the relationship between an additional device and premium content.",
+      "createdAt": "2023-01-24T10:50:38Z",
+      "updatedAt": "2023-01-24T10:50:38Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 31,
+      "id": "I_kwDOHK26QM5csD6p",
+      "title": "\"Unique Codes\" mitigation: Invalidation of issued tokens?",
+      "url": "https://github.com/oauth-wg/oauth-cross-device-security/issues/31",
+      "state": "OPEN",
+      "author": "SECtim",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "Currently, the section on \"Unique Codes\" mitigation says\r\n> This may be interpreted as anomalous behavior and the authorizations server may choose to decline issuing access and refresh tokens if it detects the same codes being presented repeatedly. \r\n\r\nMy understanding of this formulation is that an AS should not issue more tokens when it detects repeated code usages.\r\nHowever, it might make sense to also mention (or clarify if that is what's referred to here) that ASs can/should invalidate any access or refresh tokens issued \"for\" repeatedly used codes.",
+      "createdAt": "2023-01-24T14:08:02Z",
+      "updatedAt": "2023-01-24T14:11:32Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "SECtim",
+          "authorAssociation": "NONE",
+          "body": "I just realized that \"[Detect and remediate](https://www.ietf.org/archive/id/draft-ietf-oauth-cross-device-security-00.html#name-detect-and-remediate)\" covers this case.\r\nHowever, I still think it makes sense to at least point to that section from \"Unique Codes\".",
+          "createdAt": "2023-01-24T14:11:32Z",
+          "updatedAt": "2023-01-24T14:11:32Z"
+        }
+      ]
     }
   ],
   "pulls": [
@@ -1039,6 +1079,32 @@
       "mergeCommit": {
         "oid": "c5fb9ba3b01ba5cdc792780dd98ef5dbf6152ebc"
       },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 30,
+      "id": "PR_kwDOHK26QM5Iaftn",
+      "title": "Fix some typos",
+      "url": "https://github.com/oauth-wg/oauth-cross-device-security/pull/30",
+      "state": "OPEN",
+      "author": "SECtim",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "Came across a few typos while reading the draft. As I am still reading, I consider this PR to be a draft.",
+      "createdAt": "2023-01-24T10:59:06Z",
+      "updatedAt": "2023-01-24T14:57:19Z",
+      "baseRepository": "oauth-wg/oauth-cross-device-security",
+      "baseRefName": "main",
+      "baseRefOid": "91561363002c4ce6f7b795a11594b990a56c8d01",
+      "headRepository": "SECtim/oauth-cross-device-security",
+      "headRefName": "typos",
+      "headRefOid": "9495511d3dabee6d787bc40dce346d47c0f51b38",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
       "comments": [],
       "reviews": []
     }
