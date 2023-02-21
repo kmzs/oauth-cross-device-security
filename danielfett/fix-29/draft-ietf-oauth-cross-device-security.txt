@@ -5,10 +5,10 @@
 Web Authorization Protocol                                  P. Kasselman
 Internet-Draft                                                 Microsoft
 Intended status: Best Current Practice                           D. Fett
-Expires: 10 June 2023                                            yes.com
+Expires: 25 August 2023                                          yes.com
                                                                F. Skokan
                                                                     Okta
-                                                         7 December 2022
+                                                        21 February 2023
 
 
            Cross-Device Flows: Security Best Current Practice
@@ -49,11 +49,11 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 10 June 2023.
+   This Internet-Draft will expire on 25 August 2023.
 
 Copyright Notice
 
-   Copyright (c) 2022 IETF Trust and the persons identified as the
+   Copyright (c) 2023 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -444,16 +444,16 @@ Table of Contents
    the QR code and embeds it in an e-mail that is sent to a large number
    of recipients.  The e-mail contains a message stating that the
    streaming service wants to thank them for their loyal support and by
-   scanning the QR code, they will be able to add a bonus device to
-   their account for no charge.  One of the recipients open the e-mail
-   and scan the QR code to register for early access to premium content.
-   The users perform multi-factor authentication, and when asked if they
-   want a new device to be added to their account, they authorize the
-   action.  The attacker's device is now authorized to access the
-   content and obtains an access and refresh token.  The access token
-   allows the attacker to access content and the refresh token allows
-   the attacker to obtain fresh tokens whenever the access token
-   expires.
+   scanning the QR code with the app connected to the streaming service
+   account, they will be able to add a bonus device to their account for
+   no charge.  One of the recipients opens the e-mail and scans the QR
+   code.  The users perform multi-factor authentication, and when asked
+   if they want a new device to be added to their account, they
+   authorize the action.  The attacker's device is now authorized to
+   access the content and obtains an access and refresh token.  The
+   access token allows the attacker to access content and the refresh
+   token allows the attacker to obtain fresh tokens whenever the access
+   token expires.
 
    The attacker scales up the attack by emulating a new smart TV,
    obtaining multiple QR codes and widening the audience it sends the QR
