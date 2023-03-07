@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2023-02-23T01:39:03.636944+00:00",
+  "timestamp": "2023-03-07T01:50:56.287544+00:00",
   "repo": "oauth-wg/oauth-cross-device-security",
   "labels": [
     {
@@ -984,7 +984,7 @@
       "labels": [],
       "body": "fixes https://github.com/oauthstuff/draft-cross-device-security/issues/21",
       "createdAt": "2022-10-28T19:24:42Z",
-      "updatedAt": "2023-02-22T13:20:00Z",
+      "updatedAt": "2023-03-06T21:18:56Z",
       "baseRepository": "oauth-wg/oauth-cross-device-security",
       "baseRefName": "main",
       "baseRefOid": "91561363002c4ce6f7b795a11594b990a56c8d01",
@@ -1037,6 +1037,13 @@
           "body": "@danielfett Thanks!",
           "createdAt": "2023-02-22T13:20:00Z",
           "updatedAt": "2023-02-22T13:20:00Z"
+        },
+        {
+          "author": "damienbod",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "@PieterKas Can we merge this? \r\n\r\n",
+          "createdAt": "2023-03-06T21:18:56Z",
+          "updatedAt": "2023-03-06T21:18:56Z"
         }
       ],
       "reviews": [
