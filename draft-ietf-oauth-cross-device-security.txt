@@ -190,6 +190,10 @@ Table of Contents
 
 2.  Cross Device Flow Concepts
 
+   There are three cross-device flow patterns for transferring the
+   authorization request between the Initiating Device to the
+   Authorization Device.
+
 2.1.  Examples of cross-device flows
 
    Examples of cross-device flow scenarios include:
