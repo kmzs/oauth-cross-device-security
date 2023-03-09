@@ -229,12 +229,12 @@ Table of Contents
    Authorization Device.
 
    *  User transferred: In the first variant, the user initiates the
-      authroization process with the authorization server by copying
+      authorization process with the authorization server by copying
       information from the initiating device to the authorization
-      device, before authorizing an action.  For example user may read a
-      code from the initiating device and enter it on the authorization
-      device, or they may scan a QR code displayed in the initiating
-      device with the authorization device.
+      device, before authorizing an action.  For example the user may
+      read a code displayed on the initiating device and enter it on the
+      authorization device, or they may scan a QR code displayed in the
+      initiating device with the authorization device.
 
    *  Client transferred: In the second variant, the OAuth client on the
       initiating device is responsible for initiating authorization on
@@ -345,8 +345,8 @@ Table of Contents
 2.3.  Hybrid Pattern
 
    The figure below shows an example of the client requesting the
-   authorization server to initiate an authorization on the user's
-   authorization device via the backchannel.
+   authorization server to initiate an authorization request via the
+   backchannel.
 
                                  (B) Backchannel Authorization
                 +--------------+     Request           +---------------+
@@ -540,7 +540,8 @@ Table of Contents
               |              | and Authorize Access  |               |
               +--------------+                       +---------------+
 
-           Figure 4: Attacker Initiated Cross Device Flow Exploit
+        Figure 4: Attacker Initiated Cross Device Flow Exploit (User
+                            Transferred Pattern)
 
    *  (A) The attacker initiates the protocol on the initiating device
       (or by mimicking the initiating device) by starting a purchase,
@@ -572,9 +573,69 @@ Table of Contents
 
 3.2.  Client Transferred
 
-   TBD - add attack description
+                                 (C) Backchannel Authorization
+                +--------------+     Request           +---------------+
+                |  Attackers   |<--------------------->|               |
+                |  Initiating  |(F) Grant Authorization| Authorization |
+                |  Device      |<--------------------->|     Server    |
+                +--------------+                       |               |
+                  ^                                    |               |
+     (B) Attacker |                                    |               |
+         Start    |                                    |               |
+         Flow     |                                    |               |
+                +--------------+                       |               |
+                |              |                       |               |
+                |   Attacker   |                       |               |
+                |              |                       |               |
+                |              |                       |               |
+                |              |                       |               |
+                +--------------+                       |               |
+                       |  (A) Attacker Sends           |               |
+                       |       Social Engineering      |               |
+                       |       Message                 |               |
+                       |                               |               |
+   (E)User             v                               |               |
+     Authorize  +--------------+                       |               |
+     Action +---| Authorization|                       |               |
+            |   |    Device    |<--------------------->|               |
+            +-->|              |(D) Request User       |               |
+                |              |    Authorization      |               |
+                +--------------+                       +---------------+
+
+         Figure 5: Cross Device Flows (Client Transferred Pattern)
 
 3.3.  Hybrid Pattern
+
+                                 (C) Backchannel Authorization
+                +--------------+     Request           +---------------+
+                |  Attackers   |<--------------------->|               |
+                |  Initiating  |(G) Grant Authorization| Authorization |
+                |  Device      |<--------------------->|     Server    |
+                +--------------+                       |               |
+                  ^       ^                            |               |
+     (A) Attacker |       | (F) Attacker Forwards      |               |
+         Start    |       |     Access Code            |               |
+         Flow     |       |                            |               |
+                +--------------+                       |               |
+                |              |                       |               |
+                |   Attacker   |                       |               |
+                |              |                       |               |
+                |              |                       |               |
+                |              |                       |               |
+                +--------------+                       |               |
+                   ^      |  (B) Attacker Sends        |               |
+   (E) User        |      |      Social Engineering    |               |
+       Send        |      |      Message               |               |
+       Access Code |      |                            |               |
+                   |      v                            |               |
+                +--------------+                       |               |
+                | Authorization|                       |               |
+                |    Device    |<--------------------->|               |
+                |              |(D) Send Access        |               |
+                |              |    Code               |               |
+                +--------------+                       +---------------+
+
+               Figure 6: Cross Device Flows (Hybrid Pattern)
 
    The unauthenticated channel may also be exploited in variations of
    the above scenario where the user initiates the flow and is then
@@ -1373,7 +1434,7 @@ Table of Contents
    attackers that exploit the unauthenticated channel between the
    initiating and authentication/authorizing device using techniques
    commonly used in phishing attacks.  These attacks allow attackers to
-   harvest access and refresh tokens, rather than authentication
+   obtain access and refresh tokens, rather than authentication
    credentials, resulting in access to resources even if the user used
    multi-factor authentication.
 
@@ -1388,9 +1449,9 @@ Table of Contents
 
    We would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil
    Reddy Boreddy, Bjorn Hjelm, Joseph Heenan, Brian Campbell, Damien
-   Bowden, Kristina Yasuda and others (please let us know, if you've
-   been mistakenly omitted) for their valuable input, feedback and
-   general support of this work.
+   Bowden, Kristina Yasuda, Tim Würtele and others (please let us know,
+   if you've been mistakenly omitted) for their valuable input, feedback
+   and general support of this work.
 
 8.  Informative References
 
