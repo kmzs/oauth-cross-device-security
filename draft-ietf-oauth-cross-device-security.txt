@@ -5,10 +5,10 @@
 Web Authorization Protocol                                  P. Kasselman
 Internet-Draft                                                 Microsoft
 Intended status: Best Current Practice                           D. Fett
-Expires: 10 June 2023                                            yes.com
+Expires: 10 September 2023                                       yes.com
                                                                F. Skokan
                                                                     Okta
-                                                         7 December 2022
+                                                            9 March 2023
 
 
            Cross-Device Flows: Security Best Current Practice
@@ -49,11 +49,11 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 10 June 2023.
+   This Internet-Draft will expire on 10 September 2023.
 
 Copyright Notice
 
-   Copyright (c) 2022 IETF Trust and the persons identified as the
+   Copyright (c) 2023 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -70,22 +70,32 @@ Table of Contents
    1.  Introduction
      1.1.  Conventions and Terminology
    2.  Cross Device Flow Concepts
-     2.1.  Example A1: Authorize access to a video streaming service
-     2.2.  Example A2: Authorize access to productivity services
-     2.3.  Example A3: Authorize use of a bike sharing scheme
-     2.4.  Example A4: Authorize a financial transaction
-     2.5.  Example A5: Add a device to a network.
-     2.6.  Example A6: Remote onboarding
-     2.7.  Example A7: Transfer a session
+     2.1.  Examples of cross-device flows
+       2.1.1.  Example A1: Authorize access to a video streaming
+               service (User Transfer)
+       2.1.2.  Example A2: Authorize access to productivity services
+               (User Transfer)
+       2.1.3.  Example A3: Authorize use of a bike sharing scheme
+               (User Transfer)
+       2.1.4.  Example A4: Authorize a financial transaction (Client
+               Transfer)
+       2.1.5.  Example A5: Add a device to a network (User Transfer)
+       2.1.6.  Example A6: Remote onboarding (User Transfer)
+       2.1.7.  Example A7: Transfer a session (User Transfer)
+       2.1.8.  Example A8: Access a productivity application (Hybrid)
    3.  Cross-Device Flow Exploits
-     3.1.  Example B1: Illicit access to a video streaming service
-     3.2.  Example B2: Illicit access to productivity services
-     3.3.  Example B3: Illicit access to physical assets
-     3.4.  Example B4: Illicit Transaction Authorization
-     3.5.  Example B5: Illicit Network Join
-     3.6.  Example B6: Illicit Onboarding
-     3.7.  Example B7: Illicit session transfer
-     3.8.  Out of Scope
+     3.1.  User Transferred Flow
+     3.2.  Client Transferred
+     3.3.  Examples of cross-device flow exploits
+     3.4.  Example B1: Illicit access to a video streaming service
+     3.5.  Example B2: Illicit access to productivity services
+     3.6.  Example B3: Illicit access to physical assets
+     3.7.  Example B4: Illicit Transaction Authorization
+     3.8.  Example B5: Illicit Network Join
+     3.9.  Example B6: Illicit Onboarding
+     3.10. Example B7: Illicit session transfer
+     3.11. Example B8: Account takeover
+     3.12. Out of Scope
    4.  Cross-Device Protocols and Standards
    5.  Mitigating Against Cross-Device Flow Attacks
      5.1.  Practical Mitigations
@@ -152,7 +162,7 @@ Table of Contents
    credentials, but rather to persuade the user to grant authorization.
 
    In order to defend against these attacks, this document outlines
-   three potential responses:
+   three responses:
 
    1.  For protocols that are susceptible to unauthenticated channel
        exploits, deploy practical mitigations.
@@ -185,50 +195,6 @@ Table of Contents
    (e.g., a smartphone) to authorize access to a resource (e.g., access
    to a streaming service).
 
-   A typical example of a cross-device flow is shown below:
-
-                                 (B) Initiating Device
-                +--------------+     Get QR/User Code  +---------------+
-   (A)User  +---|  Initiating  |<--------------------->|               |
-      Start |   |   Device     |(E) Grant Authorization| Authorization |
-      Flow  +-->|              |<--------------------->|     Server    |
-                +--------------+                       |               |
-                       |                               |               |
-                       | (C) Scan QR code              |               |
-                       |         or                    |               |
-                       |   enter User Code             |               |
-                       v                               |               |
-                +--------------+                       |               |
-                | Authorization|                       |               |
-                |    Device    |<--------------------->|               |
-                |              |(D) User Authenticates |               |
-                |              | and Authorize Access  |               |
-                +--------------+                       +---------------+
-
-                    Figure 1: Typical Cross Device Flows
-
-   *  (A) The user takes an action on the initiating device by starting
-      a purchase, adding a device to a network or connecting a service
-      to the initiating device.
-
-   *  (B) The initiating device retrieves a QR code or user code from an
-      authorization server
-
-   *  (C) The QR code or user code is displayed on the initiating device
-      where the user scans the QR code or enters the user code on the
-      authorization device
-
-   *  (D) The user authenticates to the authorization server before
-      granting authorization.
-
-   *  (E) The Authorization Server issues tokens or grants authorization
-      to the initiating device to access the user's resources.
-
-   In some variants of these flows, the user receives a push
-   notification on their authenticating device that triggers the
-   authorization flow, removing the need to scan a QR code or enter a
-   user code manually.
-
    Cross device flows have several benefits, including:
 
    *  Authorization on devices with limited input capabilities: End-
@@ -250,9 +216,12 @@ Table of Contents
       keep all their credentials in a mobile wallet or mobile phone that
       they already carry with them.
 
+2.1.  Examples of cross-device flows
+
    Examples of cross-device flow scenarios include:
 
-2.1.  Example A1: Authorize access to a video streaming service
+2.1.1.  Example A1: Authorize access to a video streaming service (User
+        Transfer)
 
    An end-user sets up a new smart TV and wants to connect it to their
    favorite streaming service.  The TV displays a QR code that the user
@@ -262,7 +231,8 @@ Table of Contents
    service.  The user enters their credentials and grants authorization,
    after which the streaming service is available on the smart TV.
 
-2.2.  Example A2: Authorize access to productivity services
+2.1.2.  Example A2: Authorize access to productivity services (User
+        Transfer)
 
    An employee wants to access their files on an interactive whiteboard
    in a conference room.  The interactive whiteboard displays a URL and
@@ -273,7 +243,8 @@ Table of Contents
    transaction and the interactive whiteboard retrieves their files and
    allows the user to interact with the content.
 
-2.3.  Example A3: Authorize use of a bike sharing scheme
+2.1.3.  Example A3: Authorize use of a bike sharing scheme (User
+        Transfer)
 
    An end-user wants to rent a bicycle from a bike sharing scheme.  The
    bicycles are locked in bike racks on sidewalks throughout a city.  To
@@ -284,14 +255,14 @@ Table of Contents
    bike sharing service unlocks the bike, allowing the user to use it to
    cycle around the city.
 
-2.4.  Example A4: Authorize a financial transaction
+2.1.4.  Example A4: Authorize a financial transaction (Client Transfer)
 
    An end-user makes an online purchase.  Before completing the
    purchase, they get a notification on their mobile phone, asking them
    to authorize the transaction.  The user opens their app and
    authenticates to the service before authorizing the transaction.
 
-2.5.  Example A5: Add a device to a network.
+2.1.5.  Example A5: Add a device to a network (User Transfer)
 
    An employee is issued with a personal computer that is already joined
    to a network.  The employee wants to add their mobile phone to the
@@ -301,7 +272,7 @@ Table of Contents
    joined to the network and the employee can start accessing corporate
    data and services on their mobile device.
 
-2.6.  Example A6: Remote onboarding
+2.1.6.  Example A6: Remote onboarding (User Transfer)
 
    A new employee is directed to an onboarding portal to provide
    additional information to confirm their identity on their first day
@@ -317,7 +288,7 @@ Table of Contents
    of the credentials and after completing the onboarding process, their
    account is activated.
 
-2.7.  Example A7: Transfer a session
+2.1.7.  Example A7: Transfer a session (User Transfer)
 
    An employee is signed into an application on their personal computer
    and wants to bootstrap the mobile application on their mobile phone.
@@ -325,6 +296,14 @@ Table of Contents
    in their application.  The employee launches the mobile application
    on their phone and scans the QR code which results in the user being
    signed into the application on the mobile phone.
+
+2.1.8.  Example A8: Access a productivity application (Hybrid)
+
+   A user is accessing a Computer Aid Design (CAD) application.  When
+   accessing the application, an access code is sent to the user's
+   mobile phone.  The user views the access code on their phone and
+   enters it in the CAD application, after which the CAD application
+   displays the user's most recent designs.
 
 3.  Cross-Device Flow Exploits
 
@@ -334,6 +313,8 @@ Table of Contents
    the benefits of using their mobile phones as authentication and
    authorization devices, the interaction between the two devices needs
    to be secure.
+
+3.1.  User Transferred Flow
 
    A common action in these cross-device flows is to present the user
    with a QR code or a user code on the initiating device (e.g., Smart
@@ -387,7 +368,7 @@ Table of Contents
               |              | and Authorize Access  |               |
               +--------------+                       +---------------+
 
-           Figure 2: Attacker Initiated Cross Device Flow Exploit
+           Figure 1: Attacker Initiated Cross Device Flow Exploit
 
    *  (A) The attacker initiates the protocol on the initiating device
       (or by mimicking the initiating device) by starting a purchase,
@@ -429,6 +410,12 @@ Table of Contents
    use to obtain the privileges that would have been assigned to the
    user.
 
+3.2.  Client Transferred
+
+   TBD - add attack description
+
+3.3.  Examples of cross-device flow exploits
+
    The following examples illustrate these attacks in practical settings
    and show how the unauthenticated channel is exploited by attackers
    who can copy the QR codes and user codes, change the context in which
@@ -436,7 +423,7 @@ Table of Contents
    end-users into granting consent to avail of services, access data and
    make payments.
 
-3.1.  Example B1: Illicit access to a video streaming service
+3.4.  Example B1: Illicit access to a video streaming service
 
    An attacker obtains a smart TV and attempts to access an online
    streaming service.  The smart TV obtains a QR code from the
@@ -461,7 +448,7 @@ Table of Contents
    addition of a new device, the attacker obtains an access and refresh
    token, which they sell for a profit.
 
-3.2.  Example B2: Illicit access to productivity services
+3.5.  Example B2: Illicit access to productivity services
 
    An attacker emulates an enterprise application (e.g., an interactive
    whiteboard) and initiates a cross-device flow by requesting a user
@@ -479,7 +466,7 @@ Table of Contents
    continuously refresh the session by requesting new access tokens.
    These tokens may be exfiltrated and sold to third parties.
 
-3.3.  Example B3: Illicit access to physical assets
+3.6.  Example B3: Illicit access to physical assets
 
    An attacker copies a QR code from a bicycle locked in a bike rack in
    a city, prints it on a label and places the label on a bicycle at the
@@ -492,7 +479,7 @@ Table of Contents
    unlocked [NYC.Bike].  The customer proceeds to unlock another bicycle
    and lodges a complaint with the bike renting company.
 
-3.4.  Example B4: Illicit Transaction Authorization
+3.7.  Example B4: Illicit Transaction Authorization
 
    An attacker obtains a list of user identifiers for a financial
    institution and triggers a transaction request for each of the users
@@ -502,7 +489,7 @@ Table of Contents
    authorize the transaction, but a small percentage grants
    authorization by approving the transaction.
 
-3.5.  Example B5: Illicit Network Join
+3.8.  Example B5: Illicit Network Join
 
    An attacker creates a message to all employees of a company, claiming
    to be from a trusted technology provider investigating a suspected
@@ -516,7 +503,7 @@ Table of Contents
    access as an entry point and perform lateral moves to obtain
    additional privileges and access to restricted resources.
 
-3.6.  Example B6: Illicit Onboarding
+3.9.  Example B6: Illicit Onboarding
 
    An attacker initiates an employee onboarding flow and obtains a QR
    code from the onboarding portal to invoke a wallet and present a
@@ -530,7 +517,7 @@ Table of Contents
    displays a message to the attacker with instructions on how to access
    their account.
 
-3.7.  Example B7: Illicit session transfer
+3.10.  Example B7: Illicit session transfer
 
    An attacker creates a message to all employees of a company, claiming
    to be from a trusted technology provider investigating a suspected
@@ -541,7 +528,19 @@ Table of Contents
    attacker scans the QR code with their mobile phone and access the
    users data and resources.
 
-3.8.  Out of Scope
+3.11.  Example B8: Account takeover
+
+   An attacker wants to use some website which requires presentation of
+   a verifiable credential for authentication.  The attacker creates a
+   phishing website which will in real time capture log-in QR Codes from
+   the original website and present these to the victim.  The attacker
+   tries to get the victim to use the phishing website using an e-mail
+   campaign etc.  The victim scans the QR code on the phishing website,
+   invokes their wallet and presents their credentials.  Once the
+   credentials are presented, the original session from the attackers
+   device is authenticated with the victim's credentials.
+
+3.12.  Out of Scope
 
    In all of the attack scenarios listed above, a user is tricked or
    exploited.  For other attacks, where the user is willingly colluding
@@ -1309,12 +1308,18 @@ Appendix A.  Document History
 
    [[ To be removed from the final specification ]]
 
-   -00
+   -01
 
-   *  Initial draft adopted from document circulated to the OAuth
-      Security Workshop Slack Channel
+   *  Restructured document to distinguish between user transferred and
+      client backchannel transferred cross device flows
 
-   *  Upload as draft-ietf-oauth-cross-device-security-best-practice-00
+   [[ pre Working Group Adoption: ]]
+
+   -02
+
+   *  Minor edits and typos
+
+   *  Upload as draft-ietf-oauth-cross-device-security-best-practice-02
 
    -01
 
@@ -1323,19 +1328,12 @@ Appendix A.  Document History
 
    *  Upload as draft-ietf-oauth-cross-device-security-best-practice-01
 
-   -02
+   -00
 
-   *  Minor edits and typos
+   *  Initial draft adopted from document circulated to the OAuth
+      Security Workshop Slack Channel
 
-   *  Upload as draft-ietf-oauth-cross-device-security-best-practice-02
-
-      -02
-
-   *  Minor edits and typos
-
-   *  Corrected Figure 2 (incorrect numbering on diagram)
-
-   [[ pre Working Group Adoption: ]]
+   *  Upload as draft-ietf-oauth-cross-device-security-best-practice-00
 
 Authors' Addresses
 

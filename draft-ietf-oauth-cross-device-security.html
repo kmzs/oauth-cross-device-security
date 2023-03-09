@@ -16,28 +16,28 @@ these mitigations. It serves as a security guide to system designers,
 architects, product managers, security specialists, fraud analysts
 and engineers implementing cross-device flows. 
     " name="description">
-<meta content="xml2rfc 3.15.3" name="generator">
+<meta content="xml2rfc 3.16.0" name="generator">
 <meta content="security" name="keyword">
 <meta content="oauth2" name="keyword">
 <meta content="best current practice" name="keyword">
 <meta content="draft-ietf-oauth-cross-device-security-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.15.3
-    Python 3.10.8
+  xml2rfc 3.16.0
+    Python 3.10.10
     appdirs 1.4.4
     ConfigArgParse 1.5.3
     google-i18n-address 2.5.2
     html5lib 1.1
     intervaltree 3.1.0
     Jinja2 3.1.2
-    lxml 4.9.1
+    lxml 4.9.2
     MarkupSafe 2.1.1
     pycountry 22.3.5
     PyYAML 6.0
     requests 2.28.1
     setuptools 65.6.0
     six 1.16.0
-    wcwidth 0.2.5
+    wcwidth 0.2.6
 -->
 <link href="draft-ietf-oauth-cross-device-security.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
@@ -368,7 +368,7 @@ ul.empty li, .ulEmpty li {
   margin-top: 0.5em;
 }
 :is(ul, ol).compact, .ulCompact, .olCompact {
-  line-height: 100%;
+  line-height: 1;
   margin: 0 0 0 2em;
 }
 
@@ -378,10 +378,13 @@ dl {
   --indent: 3ch;
   /* --indent: attr(indent ch); not supported in any browser, but we can dream */
 }
+dl.olPercent {
+  --indent: 5ch;
+}
 dl > dt {
   float: left;
-  margin-right: 1em;
-  min-width: 12ch;
+  margin-right: 2ch;
+  min-width: 8ch;
 }
 dl.dlNewline > dt {
   float: none;
@@ -390,6 +393,9 @@ dl > dd {
   margin-bottom: .8em;
   margin-left: var(--indent) !important; /* stupid element overrides */
   min-height: 2ex;
+}
+dl.olPercent > dt {
+  min-width: calc(var(--indent) - 2ch);
 }
 :is(dl.compact, .dlCompact) > dd {
   margin-bottom: 0;
@@ -404,7 +410,7 @@ dl > dd > dl {
   margin-top: 0.5em;
   margin-bottom: 0;
 }
-dl .break {
+:is(dd, span).break {
   display: none;
 }
 
@@ -412,11 +418,11 @@ dl .break {
 a, a[href].selfRef:hover {
   text-decoration: none;
 }
-a[href].selfRef {
-  color: var(--text-color);
-}
 a[href] {
   color: var(--link-color);
+}
+a[href].selfRef, .iref + a[href].internal {
+  color: var(--text-color);
 }
 a[href]:hover {
   text-decoration: underline;
@@ -424,7 +430,7 @@ a[href]:hover {
 a[href].selfRef:hover {
   background-color: var(--highlight-color);
 }
-a.xref {
+a.xref:is(.cite, .auto), :is(#status-of-memo, #copyright) a {
   white-space: nowrap;
 }
 
@@ -436,7 +442,9 @@ tt, code, pre {
 tt, code {
   /* changing the font for inline elements leads to different ascender
      and descender heights; as we want to retain baseline alignment,
-     remove leading to avoid altering the final height of lines */
+     remove leading to avoid altering the final height of lines
+     note: this fails if these blocks take an entire line,
+     a different solution would be great */
   line-height: 0;
 }
 :is(h1, h2, h3, h4, h5, h6) :is(tt, code) {
@@ -588,10 +596,14 @@ hr {
 .bcp14 {
   font-variant: small-caps;
   font-weight: 600;
-  font-size: 14.5px;
+  font-size: var(--small-font-size);
 }
 .role {
   font-variant: all-small-caps;
+}
+sub, sup {
+  line-height: 1;
+  font-size: 80%;
 }
 
 /* info block */
@@ -1033,7 +1045,7 @@ svg :is([stroke="white"], [stroke^="#fff"]) {
 svg :is([fill="black"], [fill^="#000"], :not([fill])) {
   fill: var(--text-color);
 }
-svg :is([stroke="fill"], [fill^="#fff"]) {
+svg :is([fill="white"], [fill^="#fff"]) {
   fill: var(--background-color);
 }
 </style>
@@ -1044,11 +1056,11 @@ svg :is([stroke="fill"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">CDFS</td>
-<td class="right">December 2022</td>
+<td class="right">March 2023</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Kasselman, et al.</td>
-<td class="center">Expires 10 June 2023</td>
+<td class="center">Expires 10 September 2023</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1061,12 +1073,12 @@ svg :is([stroke="fill"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-oauth-cross-device-security-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2022-12-07" class="published">7 December 2022</time>
+<time datetime="2023-03-09" class="published">9 March 2023</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Best Current Practice</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2023-06-10">10 June 2023</time></dd>
+<dd class="expires"><time datetime="2023-09-10">10 September 2023</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1124,7 +1136,7 @@ and engineers implementing cross-device flows.<a href="#section-abstract-1" clas
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 10 June 2023.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 10 September 2023.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1133,7 +1145,7 @@ and engineers implementing cross-device flows.<a href="#section-abstract-1" clas
 <a href="#name-copyright-notice" class="section-name selfRef">Copyright Notice</a>
         </h2>
 <p id="section-boilerplate.2-1">
-            Copyright (c) 2022 IETF Trust and the persons identified as the
+            Copyright (c) 2023 IETF Trust and the persons identified as the
             document authors. All rights reserved.<a href="#section-boilerplate.2-1" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.2-2">
             This document is subject to BCP 78 and the IETF Trust's Legal
@@ -1165,25 +1177,33 @@ and engineers implementing cross-device flows.<a href="#section-abstract-1" clas
             <p id="section-toc.1-1.2.1"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-cross-device-flow-concepts" class="internal xref">Cross Device Flow Concepts</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.1">
-                <p id="section-toc.1-1.2.2.1.1" class="keepWithNext"><a href="#section-2.1" class="auto internal xref">2.1</a>.  <a href="#name-example-a1-authorize-access" class="internal xref">Example A1: Authorize access to a video streaming service</a></p>
+                <p id="section-toc.1-1.2.2.1.1"><a href="#section-2.1" class="auto internal xref">2.1</a>.  <a href="#name-examples-of-cross-device-fl" class="internal xref">Examples of cross-device flows</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.1.2.1">
+                    <p id="section-toc.1-1.2.2.1.2.1.1" class="keepWithNext"><a href="#section-2.1.1" class="auto internal xref">2.1.1</a>.  <a href="#name-example-a1-authorize-access" class="internal xref">Example A1: Authorize access to a video streaming service (User Transfer)</a></p>
 </li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.2">
-                <p id="section-toc.1-1.2.2.2.1"><a href="#section-2.2" class="auto internal xref">2.2</a>.  <a href="#name-example-a2-authorize-access" class="internal xref">Example A2: Authorize access to productivity services</a></p>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.1.2.2">
+                    <p id="section-toc.1-1.2.2.1.2.2.1"><a href="#section-2.1.2" class="auto internal xref">2.1.2</a>.  <a href="#name-example-a2-authorize-access" class="internal xref">Example A2: Authorize access to productivity services (User Transfer)</a></p>
 </li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.3">
-                <p id="section-toc.1-1.2.2.3.1"><a href="#section-2.3" class="auto internal xref">2.3</a>.  <a href="#name-example-a3-authorize-use-of" class="internal xref">Example A3: Authorize use of a bike sharing scheme</a></p>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.1.2.3">
+                    <p id="section-toc.1-1.2.2.1.2.3.1"><a href="#section-2.1.3" class="auto internal xref">2.1.3</a>.  <a href="#name-example-a3-authorize-use-of" class="internal xref">Example A3: Authorize use of a bike sharing scheme (User Transfer)</a></p>
 </li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.4">
-                <p id="section-toc.1-1.2.2.4.1"><a href="#section-2.4" class="auto internal xref">2.4</a>.  <a href="#name-example-a4-authorize-a-fina" class="internal xref">Example A4: Authorize a financial transaction</a></p>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.1.2.4">
+                    <p id="section-toc.1-1.2.2.1.2.4.1"><a href="#section-2.1.4" class="auto internal xref">2.1.4</a>.  <a href="#name-example-a4-authorize-a-fina" class="internal xref">Example A4: Authorize a financial transaction (Client Transfer)</a></p>
 </li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.5">
-                <p id="section-toc.1-1.2.2.5.1"><a href="#section-2.5" class="auto internal xref">2.5</a>.  <a href="#name-example-a5-add-a-device-to-" class="internal xref">Example A5: Add a device to a network.</a></p>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.1.2.5">
+                    <p id="section-toc.1-1.2.2.1.2.5.1"><a href="#section-2.1.5" class="auto internal xref">2.1.5</a>.  <a href="#name-example-a5-add-a-device-to-" class="internal xref">Example A5: Add a device to a network (User Transfer)</a></p>
 </li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.6">
-                <p id="section-toc.1-1.2.2.6.1"><a href="#section-2.6" class="auto internal xref">2.6</a>.  <a href="#name-example-a6-remote-onboardin" class="internal xref">Example A6: Remote onboarding</a></p>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.1.2.6">
+                    <p id="section-toc.1-1.2.2.1.2.6.1"><a href="#section-2.1.6" class="auto internal xref">2.1.6</a>.  <a href="#name-example-a6-remote-onboardin" class="internal xref">Example A6: Remote onboarding (User Transfer)</a></p>
 </li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.7">
-                <p id="section-toc.1-1.2.2.7.1"><a href="#section-2.7" class="auto internal xref">2.7</a>.  <a href="#name-example-a7-transfer-a-sessi" class="internal xref">Example A7: Transfer a session</a></p>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.1.2.7">
+                    <p id="section-toc.1-1.2.2.1.2.7.1"><a href="#section-2.1.7" class="auto internal xref">2.1.7</a>.  <a href="#name-example-a7-transfer-a-sessi" class="internal xref">Example A7: Transfer a session (User Transfer)</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.1.2.8">
+                    <p id="section-toc.1-1.2.2.1.2.8.1"><a href="#section-2.1.8" class="auto internal xref">2.1.8</a>.  <a href="#name-example-a8-access-a-product" class="internal xref">Example A8: Access a productivity application (Hybrid)</a></p>
+</li>
+                </ul>
 </li>
             </ul>
 </li>
@@ -1191,28 +1211,40 @@ and engineers implementing cross-device flows.<a href="#section-abstract-1" clas
             <p id="section-toc.1-1.3.1"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-cross-device-flow-exploits" class="internal xref">Cross-Device Flow Exploits</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.1">
-                <p id="section-toc.1-1.3.2.1.1"><a href="#section-3.1" class="auto internal xref">3.1</a>.  <a href="#name-example-b1-illicit-access-t" class="internal xref">Example B1: Illicit access to a video streaming service</a></p>
+                <p id="section-toc.1-1.3.2.1.1"><a href="#section-3.1" class="auto internal xref">3.1</a>.  <a href="#name-user-transferred-flow" class="internal xref">User Transferred Flow</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2">
-                <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="auto internal xref">3.2</a>.  <a href="#name-example-b2-illicit-access-t" class="internal xref">Example B2: Illicit access to productivity services</a></p>
+                <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="auto internal xref">3.2</a>.  <a href="#name-client-transferred" class="internal xref">Client Transferred</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.3">
-                <p id="section-toc.1-1.3.2.3.1"><a href="#section-3.3" class="auto internal xref">3.3</a>.  <a href="#name-example-b3-illicit-access-t" class="internal xref">Example B3: Illicit access to physical assets</a></p>
+                <p id="section-toc.1-1.3.2.3.1"><a href="#section-3.3" class="auto internal xref">3.3</a>.  <a href="#name-examples-of-cross-device-flo" class="internal xref">Examples of cross-device flow exploits</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.4">
-                <p id="section-toc.1-1.3.2.4.1"><a href="#section-3.4" class="auto internal xref">3.4</a>.  <a href="#name-example-b4-illicit-transact" class="internal xref">Example B4: Illicit Transaction Authorization</a></p>
+                <p id="section-toc.1-1.3.2.4.1"><a href="#section-3.4" class="auto internal xref">3.4</a>.  <a href="#name-example-b1-illicit-access-t" class="internal xref">Example B1: Illicit access to a video streaming service</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.5">
-                <p id="section-toc.1-1.3.2.5.1"><a href="#section-3.5" class="auto internal xref">3.5</a>.  <a href="#name-example-b5-illicit-network-" class="internal xref">Example B5: Illicit Network Join</a></p>
+                <p id="section-toc.1-1.3.2.5.1"><a href="#section-3.5" class="auto internal xref">3.5</a>.  <a href="#name-example-b2-illicit-access-t" class="internal xref">Example B2: Illicit access to productivity services</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.6">
-                <p id="section-toc.1-1.3.2.6.1"><a href="#section-3.6" class="auto internal xref">3.6</a>.  <a href="#name-example-b6-illicit-onboardi" class="internal xref">Example B6: Illicit Onboarding</a></p>
+                <p id="section-toc.1-1.3.2.6.1"><a href="#section-3.6" class="auto internal xref">3.6</a>.  <a href="#name-example-b3-illicit-access-t" class="internal xref">Example B3: Illicit access to physical assets</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.7">
-                <p id="section-toc.1-1.3.2.7.1"><a href="#section-3.7" class="auto internal xref">3.7</a>.  <a href="#name-example-b7-illicit-session-" class="internal xref">Example B7: Illicit session transfer</a></p>
+                <p id="section-toc.1-1.3.2.7.1"><a href="#section-3.7" class="auto internal xref">3.7</a>.  <a href="#name-example-b4-illicit-transact" class="internal xref">Example B4: Illicit Transaction Authorization</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.8">
-                <p id="section-toc.1-1.3.2.8.1"><a href="#section-3.8" class="auto internal xref">3.8</a>.  <a href="#name-out-of-scope" class="internal xref">Out of Scope</a></p>
+                <p id="section-toc.1-1.3.2.8.1"><a href="#section-3.8" class="auto internal xref">3.8</a>.  <a href="#name-example-b5-illicit-network-" class="internal xref">Example B5: Illicit Network Join</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.9">
+                <p id="section-toc.1-1.3.2.9.1"><a href="#section-3.9" class="auto internal xref">3.9</a>.  <a href="#name-example-b6-illicit-onboardi" class="internal xref">Example B6: Illicit Onboarding</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.10">
+                <p id="section-toc.1-1.3.2.10.1"><a href="#section-3.10" class="auto internal xref">3.10</a>. <a href="#name-example-b7-illicit-session-" class="internal xref">Example B7: Illicit session transfer</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.11">
+                <p id="section-toc.1-1.3.2.11.1"><a href="#section-3.11" class="auto internal xref">3.11</a>. <a href="#name-example-b8-account-takeover" class="internal xref">Example B8: Account takeover</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.12">
+                <p id="section-toc.1-1.3.2.12.1"><a href="#section-3.12" class="auto internal xref">3.12</a>. <a href="#name-out-of-scope" class="internal xref">Out of Scope</a></p>
 </li>
             </ul>
 </li>
@@ -1341,16 +1373,13 @@ execute lateral attacks and gain additional access, or monetize the tokens by
 selling them. These attacks are effective even when multi-factor authentication
 is deployed, since the attacker's aim is not to capture and replay the credentials,
 but rather to persuade the user to grant authorization.<a href="#section-1-5" class="pilcrow">¶</a></p>
-<p id="section-1-6">In order to defend against these attacks, this document outlines three potential responses:<a href="#section-1-6" class="pilcrow">¶</a></p>
+<p id="section-1-6">In order to defend against these attacks, this document outlines three responses:<a href="#section-1-6" class="pilcrow">¶</a></p>
 <ol start="1" type="1" class="normal type-1" id="section-1-7">
-<li id="section-1-7.1">For protocols that are susceptible to unauthenticated
-channel exploits, deploy practical mitigations.<a href="#section-1-7.1" class="pilcrow">¶</a>
+<li id="section-1-7.1">For protocols that are susceptible to unauthenticated channel exploits, deploy practical mitigations.<a href="#section-1-7.1" class="pilcrow">¶</a>
 </li>
-        <li id="section-1-7.2">Select protocols that are not susceptible to unauthenticated channel exploits
-when possible.<a href="#section-1-7.2" class="pilcrow">¶</a>
+        <li id="section-1-7.2">Select protocols that are not susceptible to unauthenticated channel exploits when possible.<a href="#section-1-7.2" class="pilcrow">¶</a>
 </li>
-        <li id="section-1-7.3">Conduct formal analysis of cross-device flows to assess susceptibility to
-these attacks and the effectiveness of the proposed mitigations.<a href="#section-1-7.3" class="pilcrow">¶</a>
+        <li id="section-1-7.3">Conduct formal analysis of cross-device flows to assess susceptibility to these attacks and the effectiveness of the proposed mitigations.<a href="#section-1-7.3" class="pilcrow">¶</a>
 </li>
       </ol>
 <div id="conventions-and-terminology">
@@ -1380,122 +1409,95 @@ appear in all capitals, as shown here.<a href="#section-1.1-1" class="pilcrow">�
 <p id="section-2-1">In a cross-device flow, a user starts a scenario on the initiating device
 (e.g., a smart TV) and then uses an authorization device (e.g., a smartphone) to
 authorize access to a resource (e.g., access to a streaming service).<a href="#section-2-1" class="pilcrow">¶</a></p>
-<p id="section-2-2">A typical example of a cross-device flow is shown below:<a href="#section-2-2" class="pilcrow">¶</a></p>
-<span id="name-typical-cross-device-flows"></span><figure id="figure-1">
-        <div class="lang-ascii-art sourcecode" id="section-2-3.1">
-<pre>                              (B) Initiating Device
-             +--------------+     Get QR/User Code  +---------------+
-(A)User  +---|  Initiating  |&lt;---------------------&gt;|               |
-   Start |   |   Device     |(E) Grant Authorization| Authorization |
-   Flow  +--&gt;|              |&lt;---------------------&gt;|     Server    |
-             +--------------+                       |               |
-                    |                               |               |
-                    | (C) Scan QR code              |               |
-                    |         or                    |               |
-                    |   enter User Code             |               |
-                    v                               |               |
-             +--------------+                       |               |
-             | Authorization|                       |               |
-             |    Device    |&lt;---------------------&gt;|               |
-             |              |(D) User Authenticates |               |
-             |              | and Authorize Access  |               |
-             +--------------+                       +---------------+
-</pre>
-</div>
-<figcaption><a href="#figure-1" class="selfRef">Figure 1</a>:
-<a href="#name-typical-cross-device-flows" class="selfRef">Typical Cross Device Flows</a>
-        </figcaption></figure>
+<p id="section-2-2">Cross device flows have several benefits, including:<a href="#section-2-2" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-2-4.1">(A) The user takes an action on the initiating device by starting a purchase, adding a device to a network
-or connecting a service to the initiating device.<a href="#section-2-4.1" class="pilcrow">¶</a>
-</li>
-        <li class="normal" id="section-2-4.2">(B) The initiating device retrieves a QR code or user code from an authorization server<a href="#section-2-4.2" class="pilcrow">¶</a>
-</li>
-        <li class="normal" id="section-2-4.3">(C) The QR code or user code is displayed on the initiating device where the user scans the QR code
-or enters the user code on the authorization device<a href="#section-2-4.3" class="pilcrow">¶</a>
-</li>
-        <li class="normal" id="section-2-4.4">(D) The user authenticates to the authorization server before granting authorization.<a href="#section-2-4.4" class="pilcrow">¶</a>
-</li>
-        <li class="normal" id="section-2-4.5">(E) The Authorization Server issues tokens or grants authorization to the initiating device to access the user's resources.<a href="#section-2-4.5" class="pilcrow">¶</a>
-</li>
-      </ul>
-<p id="section-2-5">In some variants of these flows, the user receives a push notification on
-their authenticating device that triggers the authorization flow, removing
-the need to scan a QR code or enter a user code manually.<a href="#section-2-5" class="pilcrow">¶</a></p>
-<p id="section-2-6">Cross device flows have several benefits, including:<a href="#section-2-6" class="pilcrow">¶</a></p>
-<ul class="normal">
-<li class="normal" id="section-2-7.1">Authorization on devices with limited input capabilities: End-users can
+<li class="normal" id="section-2-3.1">Authorization on devices with limited input capabilities: End-users can
 authorize devices with limited input capabilities to access content (e.g.,
-smart TVs, digital whiteboards, printers, etc).<a href="#section-2-7.1" class="pilcrow">¶</a>
+smart TVs, digital whiteboards, printers, etc).<a href="#section-2-3.1" class="pilcrow">¶</a>
 </li>
-        <li class="normal" id="section-2-7.2">Secure authentication on shared or public devices: End-users can perform
+        <li class="normal" id="section-2-3.2">Secure authentication on shared or public devices: End-users can perform
 authentication and authorization using a personally trusted device, without
-risk of disclosing their credentials to a public or shared device.<a href="#section-2-7.2" class="pilcrow">¶</a>
+risk of disclosing their credentials to a public or shared device.<a href="#section-2-3.2" class="pilcrow">¶</a>
 </li>
-        <li class="normal" id="section-2-7.3">Ubiquitous multi-factor authentication: Enables a user to use multi-factor
+        <li class="normal" id="section-2-3.3">Ubiquitous multi-factor authentication: Enables a user to use multi-factor
 authentication, independent of the device on which the service is being
-accessed (e.g., a kiosk, smart TV or shared Personal Computer).<a href="#section-2-7.3" class="pilcrow">¶</a>
+accessed (e.g., a kiosk, smart TV or shared Personal Computer).<a href="#section-2-3.3" class="pilcrow">¶</a>
 </li>
-        <li class="normal" id="section-2-7.4">Convenience of a single, portable, credential store: Users can keep all
+        <li class="normal" id="section-2-3.4">Convenience of a single, portable, credential store: Users can keep all
 their credentials in a mobile wallet or mobile phone that they already
-carry with them.<a href="#section-2-7.4" class="pilcrow">¶</a>
+carry with them.<a href="#section-2-3.4" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="section-2-8">Examples of cross-device flow scenarios include:<a href="#section-2-8" class="pilcrow">¶</a></p>
-<div id="example-a1-authorize-access-to-a-video-streaming-service">
+<div id="examples-of-cross-device-flows">
 <section id="section-2.1">
-        <h3 id="name-example-a1-authorize-access">
-<a href="#section-2.1" class="section-number selfRef">2.1. </a><a href="#name-example-a1-authorize-access" class="section-name selfRef">Example A1: Authorize access to a video streaming service</a>
+        <h3 id="name-examples-of-cross-device-fl">
+<a href="#section-2.1" class="section-number selfRef">2.1. </a><a href="#name-examples-of-cross-device-fl" class="section-name selfRef">Examples of cross-device flows</a>
         </h3>
-<p id="section-2.1-1">An end-user sets up a new smart TV and wants to connect it to their favorite streaming service. The TV displays a QR code that the user scans with their mobile phone. The user is redirected to the streaming service provider's web page and asked to enter their credentials to authorize the smart TV to access the streaming service. The user enters their credentials and grants authorization, after which the streaming service is available on the smart TV.<a href="#section-2.1-1" class="pilcrow">¶</a></p>
+<p id="section-2.1-1">Examples of cross-device flow scenarios include:<a href="#section-2.1-1" class="pilcrow">¶</a></p>
+<div id="example-a1-authorize-access-to-a-video-streaming-service-user-transfer">
+<section id="section-2.1.1">
+          <h4 id="name-example-a1-authorize-access">
+<a href="#section-2.1.1" class="section-number selfRef">2.1.1. </a><a href="#name-example-a1-authorize-access" class="section-name selfRef">Example A1: Authorize access to a video streaming service (User Transfer)</a>
+          </h4>
+<p id="section-2.1.1-1">An end-user sets up a new smart TV and wants to connect it to their favorite streaming service. The TV displays a QR code that the user scans with their mobile phone. The user is redirected to the streaming service provider's web page and asked to enter their credentials to authorize the smart TV to access the streaming service. The user enters their credentials and grants authorization, after which the streaming service is available on the smart TV.<a href="#section-2.1.1-1" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="example-a2-authorize-access-to-productivity-services">
-<section id="section-2.2">
-        <h3 id="name-example-a2-authorize-access">
-<a href="#section-2.2" class="section-number selfRef">2.2. </a><a href="#name-example-a2-authorize-access" class="section-name selfRef">Example A2: Authorize access to productivity services</a>
-        </h3>
-<p id="section-2.2-1">An employee wants to access their files on an interactive whiteboard in a conference room. The interactive whiteboard displays a URL and a code. The user enters the URL on their personal computer and is prompted for the code. Once they enter the code, the user is asked to authenticate and authorize the interactive whiteboard to access their files. The user enters their credentials and authorizes the transaction and the interactive whiteboard retrieves their files and allows the user to interact with the content.<a href="#section-2.2-1" class="pilcrow">¶</a></p>
+<div id="example-a2-authorize-access-to-productivity-services-user-transfer">
+<section id="section-2.1.2">
+          <h4 id="name-example-a2-authorize-access">
+<a href="#section-2.1.2" class="section-number selfRef">2.1.2. </a><a href="#name-example-a2-authorize-access" class="section-name selfRef">Example A2: Authorize access to productivity services (User Transfer)</a>
+          </h4>
+<p id="section-2.1.2-1">An employee wants to access their files on an interactive whiteboard in a conference room. The interactive whiteboard displays a URL and a code. The user enters the URL on their personal computer and is prompted for the code. Once they enter the code, the user is asked to authenticate and authorize the interactive whiteboard to access their files. The user enters their credentials and authorizes the transaction and the interactive whiteboard retrieves their files and allows the user to interact with the content.<a href="#section-2.1.2-1" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="example-a3-authorize-use-of-a-bike-sharing-scheme">
-<section id="section-2.3">
-        <h3 id="name-example-a3-authorize-use-of">
-<a href="#section-2.3" class="section-number selfRef">2.3. </a><a href="#name-example-a3-authorize-use-of" class="section-name selfRef">Example A3: Authorize use of a bike sharing scheme</a>
-        </h3>
-<p id="section-2.3-1">An end-user wants to rent a bicycle from a bike sharing scheme. The bicycles are locked in bike racks on sidewalks throughout a city. To unlock and use a bike, the user scans a QR code on the bike using their mobile phone. Scanning the QR code redirects the user to the bike sharing scheme's authorization page where the user authenticates and authorizes payment for renting the bike. Once authorized, the bike sharing service unlocks the bike, allowing the user to use it to cycle around the city.<a href="#section-2.3-1" class="pilcrow">¶</a></p>
+<div id="example-a3-authorize-use-of-a-bike-sharing-scheme-user-transfer">
+<section id="section-2.1.3">
+          <h4 id="name-example-a3-authorize-use-of">
+<a href="#section-2.1.3" class="section-number selfRef">2.1.3. </a><a href="#name-example-a3-authorize-use-of" class="section-name selfRef">Example A3: Authorize use of a bike sharing scheme (User Transfer)</a>
+          </h4>
+<p id="section-2.1.3-1">An end-user wants to rent a bicycle from a bike sharing scheme. The bicycles are locked in bike racks on sidewalks throughout a city. To unlock and use a bike, the user scans a QR code on the bike using their mobile phone. Scanning the QR code redirects the user to the bike sharing scheme's authorization page where the user authenticates and authorizes payment for renting the bike. Once authorized, the bike sharing service unlocks the bike, allowing the user to use it to cycle around the city.<a href="#section-2.1.3-1" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="example-a4-authorize-a-financial-transaction">
-<section id="section-2.4">
-        <h3 id="name-example-a4-authorize-a-fina">
-<a href="#section-2.4" class="section-number selfRef">2.4. </a><a href="#name-example-a4-authorize-a-fina" class="section-name selfRef">Example A4: Authorize a financial transaction</a>
-        </h3>
-<p id="section-2.4-1">An end-user makes an online purchase. Before completing the purchase, they get a notification on their mobile phone, asking them to authorize the transaction. The user opens their app and authenticates to the service before authorizing the transaction.<a href="#section-2.4-1" class="pilcrow">¶</a></p>
+<div id="example-a4-authorize-a-financial-transaction-client-transfer">
+<section id="section-2.1.4">
+          <h4 id="name-example-a4-authorize-a-fina">
+<a href="#section-2.1.4" class="section-number selfRef">2.1.4. </a><a href="#name-example-a4-authorize-a-fina" class="section-name selfRef">Example A4: Authorize a financial transaction (Client Transfer)</a>
+          </h4>
+<p id="section-2.1.4-1">An end-user makes an online purchase. Before completing the purchase, they get a notification on their mobile phone, asking them to authorize the transaction. The user opens their app and authenticates to the service before authorizing the transaction.<a href="#section-2.1.4-1" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="example-a5-add-a-device-to-a-network">
-<section id="section-2.5">
-        <h3 id="name-example-a5-add-a-device-to-">
-<a href="#section-2.5" class="section-number selfRef">2.5. </a><a href="#name-example-a5-add-a-device-to-" class="section-name selfRef">Example A5: Add a device to a network.</a>
-        </h3>
-<p id="section-2.5-1">An employee is issued with a personal computer that is already joined to a network. The employee wants to add their mobile phone to the network to allow it to access corporate data and services (e.g., files and e-mail). The personal computer displays a QR code, which the employee scans with their mobile phone. The mobile phone is joined to the network and the employee can start accessing corporate data and services on their mobile device.<a href="#section-2.5-1" class="pilcrow">¶</a></p>
+<div id="example-a5-add-a-device-to-a-network-user-transfer">
+<section id="section-2.1.5">
+          <h4 id="name-example-a5-add-a-device-to-">
+<a href="#section-2.1.5" class="section-number selfRef">2.1.5. </a><a href="#name-example-a5-add-a-device-to-" class="section-name selfRef">Example A5: Add a device to a network (User Transfer)</a>
+          </h4>
+<p id="section-2.1.5-1">An employee is issued with a personal computer that is already joined to a network. The employee wants to add their mobile phone to the network to allow it to access corporate data and services (e.g., files and e-mail). The personal computer displays a QR code, which the employee scans with their mobile phone. The mobile phone is joined to the network and the employee can start accessing corporate data and services on their mobile device.<a href="#section-2.1.5-1" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="example-a6-remote-onboarding">
-<section id="section-2.6">
-        <h3 id="name-example-a6-remote-onboardin">
-<a href="#section-2.6" class="section-number selfRef">2.6. </a><a href="#name-example-a6-remote-onboardin" class="section-name selfRef">Example A6: Remote onboarding</a>
-        </h3>
-<p id="section-2.6-1">A new employee is directed to an onboarding portal to provide additional information to confirm their identity on their first day with their new employer. Before activating the employee's account, the onboarding portal requests that the employee present a government issued ID, proof of a background check and proof of their qualifications. The onboarding portal displays a QR code, which the user scans with their mobile phone. Scanning the QR code invokes the employee's wallet on their mobile phone, and the employee is asked to present digital versions of an identity document (e.g., a driving license), proof of a background check by an identity verifier, and proof of their qualifications. The employee authorizes the release of the credentials and after completing the onboarding process, their account is activated.<a href="#section-2.6-1" class="pilcrow">¶</a></p>
+<div id="example-a6-remote-onboarding-user-transfer">
+<section id="section-2.1.6">
+          <h4 id="name-example-a6-remote-onboardin">
+<a href="#section-2.1.6" class="section-number selfRef">2.1.6. </a><a href="#name-example-a6-remote-onboardin" class="section-name selfRef">Example A6: Remote onboarding (User Transfer)</a>
+          </h4>
+<p id="section-2.1.6-1">A new employee is directed to an onboarding portal to provide additional information to confirm their identity on their first day with their new employer. Before activating the employee's account, the onboarding portal requests that the employee present a government issued ID, proof of a background check and proof of their qualifications. The onboarding portal displays a QR code, which the user scans with their mobile phone. Scanning the QR code invokes the employee's wallet on their mobile phone, and the employee is asked to present digital versions of an identity document (e.g., a driving license), proof of a background check by an identity verifier, and proof of their qualifications. The employee authorizes the release of the credentials and after completing the onboarding process, their account is activated.<a href="#section-2.1.6-1" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="example-a7-transfer-a-session">
-<section id="section-2.7">
-        <h3 id="name-example-a7-transfer-a-sessi">
-<a href="#section-2.7" class="section-number selfRef">2.7. </a><a href="#name-example-a7-transfer-a-sessi" class="section-name selfRef">Example A7: Transfer a session</a>
-        </h3>
-<p id="section-2.7-1">An employee is signed into an application on their personal computer and wants to bootstrap the mobile application on their mobile phone. The employee initiates the cross-device flow and is shown a QR code in their application. The employee launches the mobile application on their phone and scans the QR code which results in the user being signed into the application on the mobile phone.<a href="#section-2.7-1" class="pilcrow">¶</a></p>
+<div id="example-a7-transfer-a-session-user-transfer">
+<section id="section-2.1.7">
+          <h4 id="name-example-a7-transfer-a-sessi">
+<a href="#section-2.1.7" class="section-number selfRef">2.1.7. </a><a href="#name-example-a7-transfer-a-sessi" class="section-name selfRef">Example A7: Transfer a session (User Transfer)</a>
+          </h4>
+<p id="section-2.1.7-1">An employee is signed into an application on their personal computer and wants to bootstrap the mobile application on their mobile phone. The employee initiates the cross-device flow and is shown a QR code in their application. The employee launches the mobile application on their phone and scans the QR code which results in the user being signed into the application on the mobile phone.<a href="#section-2.1.7-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="example-a8-access-a-productivity-application-hybrid">
+<section id="section-2.1.8">
+          <h4 id="name-example-a8-access-a-product">
+<a href="#section-2.1.8" class="section-number selfRef">2.1.8. </a><a href="#name-example-a8-access-a-product" class="section-name selfRef">Example A8: Access a productivity application (Hybrid)</a>
+          </h4>
+<p id="section-2.1.8-1">A user is accessing a Computer Aid Design (CAD) application. When accessing the application, an access code is sent to the user's mobile phone. The user views the access code on their phone and enters it in the CAD application, after which the CAD application displays the user's most recent designs.<a href="#section-2.1.8-1" class="pilcrow">¶</a></p>
+</section>
+</div>
 </section>
 </div>
 </section>
@@ -1506,10 +1508,15 @@ carry with them.<a href="#section-2-7.4" class="pilcrow">¶</a>
 <a href="#section-3" class="section-number selfRef">3. </a><a href="#name-cross-device-flow-exploits" class="section-name selfRef">Cross-Device Flow Exploits</a>
       </h2>
 <p id="section-3-1">The benefits of cross-device flows is compelling and is seeing adoption for a range of consumer and enterprise scenarios such as those listed above. To ensure the user and service provider enjoy the benefits of using their mobile phones as authentication and authorization devices, the interaction between the two devices needs to be secure.<a href="#section-3-1" class="pilcrow">¶</a></p>
-<p id="section-3-2">A common action in these cross-device flows is to present the user with a QR code or a user code on the initiating device (e.g., Smart TV) and scanned or entered on the authorization device (the mobile phone). When the user scans the code or copies the user code, they do so without any proof that the QR code or user code is being displayed in the place or context intended by the service provider. It is up to the user's judgment to decide on whether they can trust the QR code or user code. In effect the user is asked to compensate for the absence of an authenticated channel between the initiating device (smart TV) and the device on which the authentication/authorization will take place (the mobile phone).<a href="#section-3-2" class="pilcrow">¶</a></p>
-<p id="section-3-3">Attackers exploit this absence of an authenticated channel between the two devices by obtaining QR codes or user codes (e.g., by initiating the authorization flows). They then use social engineering techniques to change the context in which authorization is requested to trick end-users to scan the QR code or enter it on their mobile devices. Once the end-user performs the authorization on the mobile device, the attacker who initiated the authentication or authorization request obtains access to the users resources. These attacks are also known as illicit consent grant attacks. The figure below shows an example of such an attack.<a href="#section-3-3" class="pilcrow">¶</a></p>
-<span id="name-attacker-initiated-cross-de"></span><figure id="figure-2">
-        <div class="lang-ascii-art sourcecode" id="section-3-4.1">
+<div id="user-transferred-flow">
+<section id="section-3.1">
+        <h3 id="name-user-transferred-flow">
+<a href="#section-3.1" class="section-number selfRef">3.1. </a><a href="#name-user-transferred-flow" class="section-name selfRef">User Transferred Flow</a>
+        </h3>
+<p id="section-3.1-1">A common action in these cross-device flows is to present the user with a QR code or a user code on the initiating device (e.g., Smart TV) and scanned or entered on the authorization device (the mobile phone). When the user scans the code or copies the user code, they do so without any proof that the QR code or user code is being displayed in the place or context intended by the service provider. It is up to the user's judgment to decide on whether they can trust the QR code or user code. In effect the user is asked to compensate for the absence of an authenticated channel between the initiating device (smart TV) and the device on which the authentication/authorization will take place (the mobile phone).<a href="#section-3.1-1" class="pilcrow">¶</a></p>
+<p id="section-3.1-2">Attackers exploit this absence of an authenticated channel between the two devices by obtaining QR codes or user codes (e.g., by initiating the authorization flows). They then use social engineering techniques to change the context in which authorization is requested to trick end-users to scan the QR code or enter it on their mobile devices. Once the end-user performs the authorization on the mobile device, the attacker who initiated the authentication or authorization request obtains access to the users resources. These attacks are also known as illicit consent grant attacks. The figure below shows an example of such an attack.<a href="#section-3.1-2" class="pilcrow">¶</a></p>
+<span id="name-attacker-initiated-cross-de"></span><figure id="figure-1">
+          <div class="lang-ascii-art sourcecode" id="section-3.1-3.1">
 <pre>                           (B) Initiating Device
            +--------------+     Get QR/User Code  +---------------+
            |  Attacker's  |&lt;---------------------&gt;|               |
@@ -1540,93 +1547,118 @@ carry with them.<a href="#section-2-7.4" class="pilcrow">¶</a>
            +--------------+                       +---------------+
 </pre>
 </div>
-<figcaption><a href="#figure-2" class="selfRef">Figure 2</a>:
+<figcaption><a href="#figure-1" class="selfRef">Figure 1</a>:
 <a href="#name-attacker-initiated-cross-de" class="selfRef">Attacker Initiated Cross Device Flow Exploit</a>
-        </figcaption></figure>
+          </figcaption></figure>
 <ul class="normal">
-<li class="normal" id="section-3-5.1">(A) The attacker initiates the protocol on the initiating device (or by mimicking the initiating device) by starting a purchase, adding a device to a network
-or connecting a service to the initiating device.<a href="#section-3-5.1" class="pilcrow">¶</a>
+<li class="normal" id="section-3.1-4.1">(A) The attacker initiates the protocol on the initiating device (or by mimicking the initiating device) by starting a purchase, adding a device to a network
+or connecting a service to the initiating device.<a href="#section-3.1-4.1" class="pilcrow">¶</a>
 </li>
-        <li class="normal" id="section-3-5.2">(B) The initiating device retrieves a QR code or user code from an authorization server<a href="#section-3-5.2" class="pilcrow">¶</a>
+          <li class="normal" id="section-3.1-4.2">(B) The initiating device retrieves a QR code or user code from an authorization server<a href="#section-3.1-4.2" class="pilcrow">¶</a>
 </li>
-        <li class="normal" id="section-3-5.3">(C) The attacker copies the QR code or user code<a href="#section-3-5.3" class="pilcrow">¶</a>
+          <li class="normal" id="section-3.1-4.3">(C) The attacker copies the QR code or user code<a href="#section-3.1-4.3" class="pilcrow">¶</a>
 </li>
-        <li class="normal" id="section-3-5.4">(D) The attacker changes the context in which the QR code or user code is displayed in such a way that the user is likely to scan the QR code or use the user code when completing the authorization.<a href="#section-3-5.4" class="pilcrow">¶</a>
+          <li class="normal" id="section-3.1-4.4">(D) The attacker changes the context in which the QR code or user code is displayed in such a way that the user is likely to scan the QR code or use the user code when completing the authorization.<a href="#section-3.1-4.4" class="pilcrow">¶</a>
 </li>
-        <li class="normal" id="section-3-5.5">(E) The QR code or user code is displayed in a context chosen by the attacker and the user is tricked into scanning the QR code
-or enter the user code on the authorization device.<a href="#section-3-5.5" class="pilcrow">¶</a>
+          <li class="normal" id="section-3.1-4.5">(E) The QR code or user code is displayed in a context chosen by the attacker and the user is tricked into scanning the QR code
+or enter the user code on the authorization device.<a href="#section-3.1-4.5" class="pilcrow">¶</a>
 </li>
-        <li class="normal" id="section-3-5.6">(F) The user authenticates to the Authorization Server before granting authorization.<a href="#section-3-5.6" class="pilcrow">¶</a>
+          <li class="normal" id="section-3.1-4.6">(F) The user authenticates to the Authorization Server before granting authorization.<a href="#section-3.1-4.6" class="pilcrow">¶</a>
 </li>
-        <li class="normal" id="section-3-5.7">(G) The Authorization Server issues tokens or grants authorization to the initiating device, which is under the attackers control, to access the users resources and the attacker gains access to the resources and possibly any authorization artefacts like access and refresh tokens.<a href="#section-3-5.7" class="pilcrow">¶</a>
+          <li class="normal" id="section-3.1-4.7">(G) The Authorization Server issues tokens or grants authorization to the initiating device, which is under the attackers control, to access the users resources and the attacker gains access to the resources and possibly any authorization artefacts like access and refresh tokens.<a href="#section-3.1-4.7" class="pilcrow">¶</a>
 </li>
-      </ul>
-<p id="section-3-6">The unauthenticated channel may also be exploited in variations of the above scenario where the user initiates the flow and is then tricked into sending the QR code or user code to the attacker. In these flows, the user is already authenticated and they request a QR code or user code to transfer a session or obtain some other privilege such as joining a device to a network. The attacker then proceeds to exploit the unauthenticated channel by using social engineering techniques to trick the user into initiating a flow and send the QR code or user code to the attacker, which they can then use to obtain the privileges that would have been assigned to the user.<a href="#section-3-6" class="pilcrow">¶</a></p>
-<p id="section-3-7">The following examples illustrate these attacks in practical settings and show how the unauthenticated channel is exploited by attackers who can copy the QR codes and user codes, change the context in which they are presented using social engineering techniques and mislead end-users into granting consent to avail of services, access data and make payments.<a href="#section-3-7" class="pilcrow">¶</a></p>
-<div id="example-b1-illicit-access-to-a-video-streaming-service">
-<section id="section-3.1">
-        <h3 id="name-example-b1-illicit-access-t">
-<a href="#section-3.1" class="section-number selfRef">3.1. </a><a href="#name-example-b1-illicit-access-t" class="section-name selfRef">Example B1: Illicit access to a video streaming service</a>
+        </ul>
+<p id="section-3.1-5">The unauthenticated channel may also be exploited in variations of the above scenario where the user initiates the flow and is then tricked into sending the QR code or user code to the attacker. In these flows, the user is already authenticated and they request a QR code or user code to transfer a session or obtain some other privilege such as joining a device to a network. The attacker then proceeds to exploit the unauthenticated channel by using social engineering techniques to trick the user into initiating a flow and send the QR code or user code to the attacker, which they can then use to obtain the privileges that would have been assigned to the user.<a href="#section-3.1-5" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="client-transferred">
+<section id="section-3.2">
+        <h3 id="name-client-transferred">
+<a href="#section-3.2" class="section-number selfRef">3.2. </a><a href="#name-client-transferred" class="section-name selfRef">Client Transferred</a>
         </h3>
-<p id="section-3.1-1">An attacker obtains a smart TV and attempts to access an online streaming service. The smart TV obtains a QR code from the authorization server and displays it on screen. The attacker copies the QR code and embeds it in an e-mail that is sent to a large number of recipients. The e-mail contains a message stating that the streaming service wants to thank them for their loyal support and by scanning the QR code, they will be able to add a bonus device to their account for no charge. One of the recipients open the e-mail and scan the QR code to register for early access to premium content. The users perform multi-factor authentication, and when asked if they want a new device to be added to their account, they authorize the action. The attacker's device is now authorized to access the content and obtains an access and refresh token. The access token allows the attacker to access content and the refresh token allows the attacker to obtain fresh tokens whenever the access token expires.<a href="#section-3.1-1" class="pilcrow">¶</a></p>
-<p id="section-3.1-2">The attacker scales up the attack by emulating a new smart TV, obtaining multiple QR codes and widening the audience it sends the QR code to. Whenever a recipient scans the QR code and authorizes the addition of a new device, the attacker obtains an access and refresh token, which they sell for a profit.<a href="#section-3.1-2" class="pilcrow">¶</a></p>
+<p id="section-3.2-1">TBD - add attack description<a href="#section-3.2-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="examples-of-cross-device-flow-exploits">
+<section id="section-3.3">
+        <h3 id="name-examples-of-cross-device-flo">
+<a href="#section-3.3" class="section-number selfRef">3.3. </a><a href="#name-examples-of-cross-device-flo" class="section-name selfRef">Examples of cross-device flow exploits</a>
+        </h3>
+<p id="section-3.3-1">The following examples illustrate these attacks in practical settings and show how the unauthenticated channel is exploited by attackers who can copy the QR codes and user codes, change the context in which they are presented using social engineering techniques and mislead end-users into granting consent to avail of services, access data and make payments.<a href="#section-3.3-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="example-b1-illicit-access-to-a-video-streaming-service">
+<section id="section-3.4">
+        <h3 id="name-example-b1-illicit-access-t">
+<a href="#section-3.4" class="section-number selfRef">3.4. </a><a href="#name-example-b1-illicit-access-t" class="section-name selfRef">Example B1: Illicit access to a video streaming service</a>
+        </h3>
+<p id="section-3.4-1">An attacker obtains a smart TV and attempts to access an online streaming service. The smart TV obtains a QR code from the authorization server and displays it on screen. The attacker copies the QR code and embeds it in an e-mail that is sent to a large number of recipients. The e-mail contains a message stating that the streaming service wants to thank them for their loyal support and by scanning the QR code, they will be able to add a bonus device to their account for no charge. One of the recipients open the e-mail and scan the QR code to register for early access to premium content. The users perform multi-factor authentication, and when asked if they want a new device to be added to their account, they authorize the action. The attacker's device is now authorized to access the content and obtains an access and refresh token. The access token allows the attacker to access content and the refresh token allows the attacker to obtain fresh tokens whenever the access token expires.<a href="#section-3.4-1" class="pilcrow">¶</a></p>
+<p id="section-3.4-2">The attacker scales up the attack by emulating a new smart TV, obtaining multiple QR codes and widening the audience it sends the QR code to. Whenever a recipient scans the QR code and authorizes the addition of a new device, the attacker obtains an access and refresh token, which they sell for a profit.<a href="#section-3.4-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="example-b2-illicit-access-to-productivity-services">
-<section id="section-3.2">
+<section id="section-3.5">
         <h3 id="name-example-b2-illicit-access-t">
-<a href="#section-3.2" class="section-number selfRef">3.2. </a><a href="#name-example-b2-illicit-access-t" class="section-name selfRef">Example B2: Illicit access to productivity services</a>
+<a href="#section-3.5" class="section-number selfRef">3.5. </a><a href="#name-example-b2-illicit-access-t" class="section-name selfRef">Example B2: Illicit access to productivity services</a>
         </h3>
-<p id="section-3.2-1">An attacker emulates an enterprise application (e.g., an interactive whiteboard) and initiates a cross-device flow by requesting a user code and URL from the authorization server. The attacker obtains a list of potential victims and sends an e-mail informing users that their files will be deleted within 24 hours if they don't follow the link, enter the user code and authenticate. The e-mail reminds them that this is the third time that they have been notified and their last opportunity to prevent deletion of their work files. One or more employees respond by following the URL, entering the code and performing multi-factor authentication. Once these employees authorized access, the attacker obtains access and refresh tokens from the authorization server and uses it to access the users files, perform lateral attacks to obtain access to other information and continuously refresh the session by requesting new access tokens. These tokens may be exfiltrated and sold to third parties.<a href="#section-3.2-1" class="pilcrow">¶</a></p>
+<p id="section-3.5-1">An attacker emulates an enterprise application (e.g., an interactive whiteboard) and initiates a cross-device flow by requesting a user code and URL from the authorization server. The attacker obtains a list of potential victims and sends an e-mail informing users that their files will be deleted within 24 hours if they don't follow the link, enter the user code and authenticate. The e-mail reminds them that this is the third time that they have been notified and their last opportunity to prevent deletion of their work files. One or more employees respond by following the URL, entering the code and performing multi-factor authentication. Once these employees authorized access, the attacker obtains access and refresh tokens from the authorization server and uses it to access the users files, perform lateral attacks to obtain access to other information and continuously refresh the session by requesting new access tokens. These tokens may be exfiltrated and sold to third parties.<a href="#section-3.5-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="example-b3-illicit-access-to-physical-assets">
-<section id="section-3.3">
+<section id="section-3.6">
         <h3 id="name-example-b3-illicit-access-t">
-<a href="#section-3.3" class="section-number selfRef">3.3. </a><a href="#name-example-b3-illicit-access-t" class="section-name selfRef">Example B3: Illicit access to physical assets</a>
+<a href="#section-3.6" class="section-number selfRef">3.6. </a><a href="#name-example-b3-illicit-access-t" class="section-name selfRef">Example B3: Illicit access to physical assets</a>
         </h3>
-<p id="section-3.3-1">An attacker copies a QR code from a bicycle locked in a bike rack in a city, prints it on a label and places the label on a bicycle at the other end of the bike rack. A customer approaches the bike that contains the replicated QR code and scans the code and authenticates before authorizing payment for renting the bicycle. The bike rack unlocks the bike containing the original QR code and the attacker removes the bicycle before cycling down the street while the customer is left frustrated that the bike they were trying to use is not being unlocked <span>[<a href="#NYC.Bike" class="cite xref">NYC.Bike</a>]</span>. The customer proceeds to unlock another bicycle and lodges a complaint with the bike renting company.<a href="#section-3.3-1" class="pilcrow">¶</a></p>
+<p id="section-3.6-1">An attacker copies a QR code from a bicycle locked in a bike rack in a city, prints it on a label and places the label on a bicycle at the other end of the bike rack. A customer approaches the bike that contains the replicated QR code and scans the code and authenticates before authorizing payment for renting the bicycle. The bike rack unlocks the bike containing the original QR code and the attacker removes the bicycle before cycling down the street while the customer is left frustrated that the bike they were trying to use is not being unlocked <span>[<a href="#NYC.Bike" class="cite xref">NYC.Bike</a>]</span>. The customer proceeds to unlock another bicycle and lodges a complaint with the bike renting company.<a href="#section-3.6-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="example-b4-illicit-transaction-authorization">
-<section id="section-3.4">
+<section id="section-3.7">
         <h3 id="name-example-b4-illicit-transact">
-<a href="#section-3.4" class="section-number selfRef">3.4. </a><a href="#name-example-b4-illicit-transact" class="section-name selfRef">Example B4: Illicit Transaction Authorization</a>
+<a href="#section-3.7" class="section-number selfRef">3.7. </a><a href="#name-example-b4-illicit-transact" class="section-name selfRef">Example B4: Illicit Transaction Authorization</a>
         </h3>
-<p id="section-3.4-1">An attacker obtains a list of user identifiers for a financial institution and triggers a transaction request for each of the users on the list. The financial institution's authorization server sends push notifications to each of the users, requesting authorization of a transaction. The vast majority of users ignore the request to authorize the transaction, but a small percentage grants authorization by approving the transaction.<a href="#section-3.4-1" class="pilcrow">¶</a></p>
+<p id="section-3.7-1">An attacker obtains a list of user identifiers for a financial institution and triggers a transaction request for each of the users on the list. The financial institution's authorization server sends push notifications to each of the users, requesting authorization of a transaction. The vast majority of users ignore the request to authorize the transaction, but a small percentage grants authorization by approving the transaction.<a href="#section-3.7-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="example-b5-illicit-network-join">
-<section id="section-3.5">
+<section id="section-3.8">
         <h3 id="name-example-b5-illicit-network-">
-<a href="#section-3.5" class="section-number selfRef">3.5. </a><a href="#name-example-b5-illicit-network-" class="section-name selfRef">Example B5: Illicit Network Join</a>
+<a href="#section-3.8" class="section-number selfRef">3.8. </a><a href="#name-example-b5-illicit-network-" class="section-name selfRef">Example B5: Illicit Network Join</a>
         </h3>
-<p id="section-3.5-1">An attacker creates a message to all employees of a company, claiming to be from a trusted technology provider investigating a suspected security breach. They ask employees to send them the QR code typically used to join a new device to the network, along with detailed steps on how to obtain the QR code. The employee, eager to assist, initiates the process to add a new mobile device to the network. They authenticate to the network and obtain a QR code. They send the QR code to the attacker. The attacker scans the QR code and adds their own device to the network. They use this device access as an entry point and perform lateral moves to obtain additional privileges and access to restricted resources.<a href="#section-3.5-1" class="pilcrow">¶</a></p>
+<p id="section-3.8-1">An attacker creates a message to all employees of a company, claiming to be from a trusted technology provider investigating a suspected security breach. They ask employees to send them the QR code typically used to join a new device to the network, along with detailed steps on how to obtain the QR code. The employee, eager to assist, initiates the process to add a new mobile device to the network. They authenticate to the network and obtain a QR code. They send the QR code to the attacker. The attacker scans the QR code and adds their own device to the network. They use this device access as an entry point and perform lateral moves to obtain additional privileges and access to restricted resources.<a href="#section-3.8-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="example-b6-illicit-onboarding">
-<section id="section-3.6">
+<section id="section-3.9">
         <h3 id="name-example-b6-illicit-onboardi">
-<a href="#section-3.6" class="section-number selfRef">3.6. </a><a href="#name-example-b6-illicit-onboardi" class="section-name selfRef">Example B6: Illicit Onboarding</a>
+<a href="#section-3.9" class="section-number selfRef">3.9. </a><a href="#name-example-b6-illicit-onboardi" class="section-name selfRef">Example B6: Illicit Onboarding</a>
         </h3>
-<p id="section-3.6-1">An attacker initiates an employee onboarding flow and obtains a QR code from the onboarding portal to invoke a wallet and present a verifiable credential attesting to a new employee's identity. The attacker obtains a list of potential new employees and sends an e-mail informing them that it is time to present proof of their background check or government issued ID. The new employee scans the QR code, invokes their wallet and presents their credentials. Once the credentials are presented, the employee's account is activated. The employee portal accessed by the attacker to obtain the QR code displays a message to the attacker with instructions on how to access their account.<a href="#section-3.6-1" class="pilcrow">¶</a></p>
+<p id="section-3.9-1">An attacker initiates an employee onboarding flow and obtains a QR code from the onboarding portal to invoke a wallet and present a verifiable credential attesting to a new employee's identity. The attacker obtains a list of potential new employees and sends an e-mail informing them that it is time to present proof of their background check or government issued ID. The new employee scans the QR code, invokes their wallet and presents their credentials. Once the credentials are presented, the employee's account is activated. The employee portal accessed by the attacker to obtain the QR code displays a message to the attacker with instructions on how to access their account.<a href="#section-3.9-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="example-b7-illicit-session-transfer">
-<section id="section-3.7">
+<section id="section-3.10">
         <h3 id="name-example-b7-illicit-session-">
-<a href="#section-3.7" class="section-number selfRef">3.7. </a><a href="#name-example-b7-illicit-session-" class="section-name selfRef">Example B7: Illicit session transfer</a>
+<a href="#section-3.10" class="section-number selfRef">3.10. </a><a href="#name-example-b7-illicit-session-" class="section-name selfRef">Example B7: Illicit session transfer</a>
         </h3>
-<p id="section-3.7-1">An attacker creates a message to all employees of a company, claiming to be from a trusted technology provider investigating a suspected security breach. They ask employees to send them the QR code typically used to transfer a session. The employee, eager to assist, initiates the process to transfer a session. They authenticate  and obtain a QR code and then send the QR code to the attacker. The attacker scans the QR code with their mobile phone and access the users data and resources.<a href="#section-3.7-1" class="pilcrow">¶</a></p>
+<p id="section-3.10-1">An attacker creates a message to all employees of a company, claiming to be from a trusted technology provider investigating a suspected security breach. They ask employees to send them the QR code typically used to transfer a session. The employee, eager to assist, initiates the process to transfer a session. They authenticate  and obtain a QR code and then send the QR code to the attacker. The attacker scans the QR code with their mobile phone and access the users data and resources.<a href="#section-3.10-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="example-b8-account-takeover">
+<section id="section-3.11">
+        <h3 id="name-example-b8-account-takeover">
+<a href="#section-3.11" class="section-number selfRef">3.11. </a><a href="#name-example-b8-account-takeover" class="section-name selfRef">Example B8: Account takeover</a>
+        </h3>
+<p id="section-3.11-1">An attacker wants to use some website which requires presentation of a verifiable credential for authentication. The attacker creates a phishing website which will in real time capture log-in QR Codes from the original website and present these to the victim. The attacker tries to get the victim to use the phishing website using an e-mail campaign etc. The victim scans the QR code on the phishing website, invokes their wallet and presents their credentials. Once the credentials are presented, the original session from the attackers device is authenticated with the victim's credentials.<a href="#section-3.11-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="out-of-scope">
-<section id="section-3.8">
+<section id="section-3.12">
         <h3 id="name-out-of-scope">
-<a href="#section-3.8" class="section-number selfRef">3.8. </a><a href="#name-out-of-scope" class="section-name selfRef">Out of Scope</a>
+<a href="#section-3.12" class="section-number selfRef">3.12. </a><a href="#name-out-of-scope" class="section-name selfRef">Out of Scope</a>
         </h3>
-<p id="section-3.8-1">In all of the attack scenarios listed above, a user is tricked or exploited. For other attacks, where the user is willingly colluding with the attacker, the security implications and potential mitigations are very different. For example, a cooperating user can bypass software mitigations on his device, share access to hardware tokens with the attacker, and install additional devices to forward radio signals to trick proximity checks.<a href="#section-3.8-1" class="pilcrow">¶</a></p>
-<p id="section-3.8-2">This document therefore only considers scenarios where a user does not collude with an attacker.<a href="#section-3.8-2" class="pilcrow">¶</a></p>
+<p id="section-3.12-1">In all of the attack scenarios listed above, a user is tricked or exploited. For other attacks, where the user is willingly colluding with the attacker, the security implications and potential mitigations are very different. For example, a cooperating user can bypass software mitigations on his device, share access to hardware tokens with the attacker, and install additional devices to forward radio signals to trick proximity checks.<a href="#section-3.12-1" class="pilcrow">¶</a></p>
+<p id="section-3.12-2">This document therefore only considers scenarios where a user does not collude with an attacker.<a href="#section-3.12-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -2224,36 +2256,33 @@ available on many platforms.<a href="#section-5.1.1-4" class="pilcrow">¶</a></p
 <a href="#appendix-A" class="section-number selfRef">Appendix A. </a><a href="#name-document-history" class="section-name selfRef">Document History</a>
       </h2>
 <p id="appendix-A-1">[[ To be removed from the final specification ]]<a href="#appendix-A-1" class="pilcrow">¶</a></p>
-<p id="appendix-A-2">-00<a href="#appendix-A-2" class="pilcrow">¶</a></p>
+<p id="appendix-A-2">-01<a href="#appendix-A-2" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="appendix-A-3.1">Initial draft adopted from document circulated to the OAuth Security Workshop Slack Channel<a href="#appendix-A-3.1" class="pilcrow">¶</a>
-</li>
-        <li class="normal" id="appendix-A-3.2">Upload as draft-ietf-oauth-cross-device-security-best-practice-00<a href="#appendix-A-3.2" class="pilcrow">¶</a>
+<li class="normal" id="appendix-A-3.1">Restructured document to distinguish between user transferred and client backchannel transferred cross device flows<a href="#appendix-A-3.1" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="appendix-A-4">-01<a href="#appendix-A-4" class="pilcrow">¶</a></p>
+<p id="appendix-A-4">[[ pre Working Group Adoption: ]]<a href="#appendix-A-4" class="pilcrow">¶</a></p>
+<p id="appendix-A-5">-02<a href="#appendix-A-5" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="appendix-A-5.1">Updated draft based on feedback from version circulated to OAuth working group<a href="#appendix-A-5.1" class="pilcrow">¶</a>
+<li class="normal" id="appendix-A-6.1">Minor edits and typos<a href="#appendix-A-6.1" class="pilcrow">¶</a>
 </li>
-        <li class="normal" id="appendix-A-5.2">Upload as draft-ietf-oauth-cross-device-security-best-practice-01<a href="#appendix-A-5.2" class="pilcrow">¶</a>
+        <li class="normal" id="appendix-A-6.2">Upload as draft-ietf-oauth-cross-device-security-best-practice-02<a href="#appendix-A-6.2" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="appendix-A-6">-02<a href="#appendix-A-6" class="pilcrow">¶</a></p>
+<p id="appendix-A-7">-01<a href="#appendix-A-7" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="appendix-A-7.1">Minor edits and typos<a href="#appendix-A-7.1" class="pilcrow">¶</a>
+<li class="normal" id="appendix-A-8.1">Updated draft based on feedback from version circulated to OAuth working group<a href="#appendix-A-8.1" class="pilcrow">¶</a>
 </li>
-        <li class="normal" id="appendix-A-7.2">
-          <p id="appendix-A-7.2.1">Upload as draft-ietf-oauth-cross-device-security-best-practice-02<a href="#appendix-A-7.2.1" class="pilcrow">¶</a></p>
-<p id="appendix-A-7.2.2">-02<a href="#appendix-A-7.2.2" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-A-7.3">
-          <p id="appendix-A-7.3.1">Minor edits and typos<a href="#appendix-A-7.3.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-A-7.4">
-          <p id="appendix-A-7.4.1">Corrected Figure 2 (incorrect numbering on diagram)<a href="#appendix-A-7.4.1" class="pilcrow">¶</a></p>
+        <li class="normal" id="appendix-A-8.2">Upload as draft-ietf-oauth-cross-device-security-best-practice-01<a href="#appendix-A-8.2" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="appendix-A-8">[[ pre Working Group Adoption: ]]<a href="#appendix-A-8" class="pilcrow">¶</a></p>
+<p id="appendix-A-9">-00<a href="#appendix-A-9" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="appendix-A-10.1">Initial draft adopted from document circulated to the OAuth Security Workshop Slack Channel<a href="#appendix-A-10.1" class="pilcrow">¶</a>
+</li>
+        <li class="normal" id="appendix-A-10.2">Upload as draft-ietf-oauth-cross-device-security-best-practice-00<a href="#appendix-A-10.2" class="pilcrow">¶</a>
+</li>
+      </ul>
 </section>
 </div>
 <div id="authors-addresses">
