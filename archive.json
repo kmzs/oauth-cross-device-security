@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2023-03-07T01:50:56.287544+00:00",
+  "timestamp": "2023-03-09T01:47:42.613253+00:00",
   "repo": "oauth-wg/oauth-cross-device-security",
   "labels": [
     {
@@ -258,15 +258,15 @@
       "id": "I_kwDOHK26QM5VGUzI",
       "title": "new example: Example B7: Account takeover",
       "url": "https://github.com/oauth-wg/oauth-cross-device-security/issues/21",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "damienbod",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "I thought this would be another possible attack:\r\n\r\nCreating a PR for this, what do you think?\r\n\r\nPR: https://github.com/oauthstuff/draft-cross-device-security/pull/20\r\n\r\nGreetings Damien",
       "createdAt": "2022-10-28T19:26:18Z",
-      "updatedAt": "2022-10-28T19:49:16Z",
-      "closedAt": null,
+      "updatedAt": "2023-03-08T20:35:35Z",
+      "closedAt": "2023-03-08T20:35:35Z",
       "comments": []
     },
     {
@@ -977,24 +977,26 @@
       "id": "PR_kwDOHK26QM5Bxj88",
       "title": "Add new Example B7: Account takeover",
       "url": "https://github.com/oauth-wg/oauth-cross-device-security/pull/20",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "damienbod",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "fixes https://github.com/oauthstuff/draft-cross-device-security/issues/21",
       "createdAt": "2022-10-28T19:24:42Z",
-      "updatedAt": "2023-03-06T21:18:56Z",
+      "updatedAt": "2023-03-08T20:38:39Z",
       "baseRepository": "oauth-wg/oauth-cross-device-security",
       "baseRefName": "main",
       "baseRefOid": "91561363002c4ce6f7b795a11594b990a56c8d01",
       "headRepository": "damienbod/draft-cross-device-security",
       "headRefName": "damienbod/example-account-takeover",
       "headRefOid": "2d91d4fcd3da84c45b40275c35f3a4f64aafae08",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2023-03-08T20:35:33Z",
+      "mergedAt": "2023-03-08T20:35:33Z",
+      "mergedBy": "PieterKas",
+      "mergeCommit": {
+        "oid": "be4bae023af8700792a67aeb7b734386f1c0dfd2"
+      },
       "comments": [
         {
           "author": "PieterKas",
@@ -1044,6 +1046,13 @@
           "body": "@PieterKas Can we merge this? \r\n\r\n",
           "createdAt": "2023-03-06T21:18:56Z",
           "updatedAt": "2023-03-06T21:18:56Z"
+        },
+        {
+          "author": "PieterKas",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Merged",
+          "createdAt": "2023-03-08T20:38:38Z",
+          "updatedAt": "2023-03-08T20:38:38Z"
         }
       ],
       "reviews": [
