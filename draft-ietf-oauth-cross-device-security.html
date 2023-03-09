@@ -1496,6 +1496,44 @@ or enters the user code on the authorization device.<a href="#section-2.1-3.3" c
 <a href="#section-2.2" class="section-number selfRef">2.2. </a><a href="#name-client-transferred" class="section-name selfRef">Client Transferred</a>
         </h3>
 <p id="section-2.2-1">The figure below shows an example of the client requesting the authorization server to initiate an authorization on the user's authorization device via the backchannel.<a href="#section-2.2-1" class="pilcrow">¶</a></p>
+<span id="name-cross-device-flows-client-t"></span><figure id="figure-2">
+          <div class="lang-ascii-art sourcecode" id="section-2.2-2.1">
+<pre>                              (B) Backchannel Authorization
+             +--------------+     Request           +---------------+
+(A)User  +---|  Initiating  |&lt;---------------------&gt;|               |
+   Start |   |   Device     |(E) Grant Authorization| Authorization |
+   Flow  +--&gt;|              |&lt;---------------------&gt;|     Server    |
+             +--------------+                       |               |
+                                                    |               |
+                                                    |               |
+                                                    |               |
+                                                    |               |
+(D)User                                             |               |
+  Authorize  +--------------+                       |               |
+  Action +---| Authorization|                       |               |
+         |   |    Device    |&lt;---------------------&gt;|               |
+         +--&gt;|              |(C) Request User       |               |
+             |              |    Authorization      |               |
+             +--------------+                       +---------------+
+</pre>
+</div>
+<figcaption><a href="#figure-2" class="selfRef">Figure 2</a>:
+<a href="#name-cross-device-flows-client-t" class="selfRef">Cross Device Flows (Client Transferred)</a>
+          </figcaption></figure>
+<ul class="normal">
+<li class="normal" id="section-2.2-3.1">(A) The user takes an action on the initiating device by starting a purchase, adding a device to a network or connecting a service to the initiating device.<a href="#section-2.2-3.1" class="pilcrow">¶</a>
+</li>
+          <li class="normal" id="section-2.2-3.2">(B) The client on the initiating device requests user authorization on the backchannel from the authorization server.<a href="#section-2.2-3.2" class="pilcrow">¶</a>
+</li>
+          <li class="normal" id="section-2.2-3.3">(C) The authorization server requests the authorization from the user on the user's device.<a href="#section-2.2-3.3" class="pilcrow">¶</a>
+</li>
+          <li class="normal" id="section-2.2-3.4">(D) The user authenticates to the authorization server before granting authorization on their device.<a href="#section-2.2-3.4" class="pilcrow">¶</a>
+</li>
+          <li class="normal" id="section-2.2-3.5">(E) The Authorization Server issues tokens or grants authorization to the initiating device to access the user's resources.<a href="#section-2.2-3.5" class="pilcrow">¶</a>
+</li>
+        </ul>
+<p id="section-2.2-4">The Authorization Server may use a variety of mechanisms to request user authorization, including a push notification to a dedicated app on a mobile phone, or sending a text message with a link to an endpoint where the user can authenticate and authorize and action.<a href="#section-2.2-4" class="pilcrow">¶</a></p>
+<p id="section-2.2-5">The Client Initiated Backchannel Authentication <span>[<a href="#CIBA" class="cite xref">CIBA</a>]</span> follows this pattern.<a href="#section-2.2-5" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="examples-of-cross-device-flows">
@@ -1585,7 +1623,7 @@ or enters the user code on the authorization device.<a href="#section-2.1-3.3" c
         </h3>
 <p id="section-3.1-1">A common action in these cross-device flows is to present the user with a QR code or a user code on the initiating device (e.g., Smart TV) and scanned or entered on the authorization device (the mobile phone). When the user scans the code or copies the user code, they do so without any proof that the QR code or user code is being displayed in the place or context intended by the service provider. It is up to the user's judgment to decide on whether they can trust the QR code or user code. In effect the user is asked to compensate for the absence of an authenticated channel between the initiating device (smart TV) and the device on which the authentication/authorization will take place (the mobile phone).<a href="#section-3.1-1" class="pilcrow">¶</a></p>
 <p id="section-3.1-2">Attackers exploit this absence of an authenticated channel between the two devices by obtaining QR codes or user codes (e.g., by initiating the authorization flows). They then use social engineering techniques to change the context in which authorization is requested to trick end-users to scan the QR code or enter it on their mobile devices. Once the end-user performs the authorization on the mobile device, the attacker who initiated the authentication or authorization request obtains access to the users resources. These attacks are also known as illicit consent grant attacks. The figure below shows an example of such an attack.<a href="#section-3.1-2" class="pilcrow">¶</a></p>
-<span id="name-attacker-initiated-cross-de"></span><figure id="figure-2">
+<span id="name-attacker-initiated-cross-de"></span><figure id="figure-3">
           <div class="lang-ascii-art sourcecode" id="section-3.1-3.1">
 <pre>                           (B) Initiating Device
            +--------------+     Get QR/User Code  +---------------+
@@ -1617,7 +1655,7 @@ or enters the user code on the authorization device.<a href="#section-2.1-3.3" c
            +--------------+                       +---------------+
 </pre>
 </div>
-<figcaption><a href="#figure-2" class="selfRef">Figure 2</a>:
+<figcaption><a href="#figure-3" class="selfRef">Figure 3</a>:
 <a href="#name-attacker-initiated-cross-de" class="selfRef">Attacker Initiated Cross Device Flow Exploit</a>
           </figcaption></figure>
 <ul class="normal">
