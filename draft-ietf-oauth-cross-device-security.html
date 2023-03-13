@@ -1060,7 +1060,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Kasselman, et al.</td>
-<td class="center">Expires 11 September 2023</td>
+<td class="center">Expires 14 September 2023</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1073,12 +1073,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-oauth-cross-device-security-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2023-03-10" class="published">10 March 2023</time>
+<time datetime="2023-03-13" class="published">13 March 2023</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Best Current Practice</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2023-09-11">11 September 2023</time></dd>
+<dd class="expires"><time datetime="2023-09-14">14 September 2023</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1136,7 +1136,7 @@ and engineers implementing cross-device flows.<a href="#section-abstract-1" clas
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 11 September 2023.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 14 September 2023.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1273,7 +1273,7 @@ and engineers implementing cross-device flows.<a href="#section-abstract-1" clas
                     <p id="section-toc.1-1.5.2.1.2.1.1"><a href="#section-5.1.1" class="auto internal xref">5.1.1</a>.  <a href="#name-establish-proximity" class="internal xref">Establish Proximity</a></p>
 </li>
                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1.2.2">
-                    <p id="section-toc.1-1.5.2.1.2.2.1"><a href="#section-5.1.2" class="auto internal xref">5.1.2</a>.  <a href="#name-short-lived-timebound-codes" class="internal xref">Short Lived/Timebound Codes</a></p>
+                    <p id="section-toc.1-1.5.2.1.2.2.1"><a href="#section-5.1.2" class="auto internal xref">5.1.2</a>.  <a href="#name-short-lived-timebound-user-" class="internal xref">Short Lived/Timebound User Codes</a></p>
 </li>
                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1.2.3">
                     <p id="section-toc.1-1.5.2.1.2.3.1"><a href="#section-5.1.3" class="auto internal xref">5.1.3</a>.  <a href="#name-one-time-or-limited-use-cod" class="internal xref">One-Time or Limited Use Codes</a></p>
@@ -1734,7 +1734,7 @@ or enter the user code on the authorization device.<a href="#section-3.1-4.5" cl
         <h3 id="name-client-transferred-pattern-2">
 <a href="#section-3.2" class="section-number selfRef">3.2. </a><a href="#name-client-transferred-pattern-2" class="section-name selfRef">Client Transferred Pattern</a>
         </h3>
-<p id="section-3.2-1">In the client transferred pattern, the client instructs the authorization server to authetnicate the user and obtain authorization for an action. This may happen as a result of user interaction with the initiating device, but may also be triggered without the users direct interaction with the initiating device.<a href="#section-3.2-1" class="pilcrow">¶</a></p>
+<p id="section-3.2-1">In the client transferred pattern, the client instructs the authorization server to authetnicate the user and obtain authorization for an action. This may happen as a result of user interaction with the initiating device, but may also be triggered without the users direct interaction with the initiating device, resulting in an authorization request presented to the user without context of why or who triggered the request.<a href="#section-3.2-1" class="pilcrow">¶</a></p>
 <p id="section-3.2-2">Attackers exploit this lack of context by using social engineering techniques to prime the user for an authorization request and thereby trick them into granting authroization. The social engineering techniques range in sophistication from messages misrepresenting the reason for receiving an authroizations requests through to triggering a large volume of requests at an inconvenient time for the user, in the hope that the user will grant authroization to make the requests stop. The figure below shows an example of such an attack.<a href="#section-3.2-2" class="pilcrow">¶</a></p>
 <span id="name-attacker-initiated-cross-dev"></span><figure id="figure-5">
           <div class="lang-ascii-art sourcecode" id="section-3.2-3.1">
@@ -1793,8 +1793,9 @@ or enter the user code on the authorization device.<a href="#section-3.1-4.5" cl
 <a href="#section-3.3" class="section-number selfRef">3.3. </a><a href="#name-hybrid-pattern-2" class="section-name selfRef">Hybrid Pattern</a>
         </h3>
 <p id="section-3.3-1">In cross device flows that follow the Hybrid Pattern, the client initiates the authorizations request, but the user stil has to transfer the authorization code to the inititing device.  The authorization request may happen as a result of user interaction with the initiating device, but may also be triggered without the users direct interaction with the initiating device.<a href="#section-3.3-1" class="pilcrow">¶</a></p>
-<span id="name-cross-device-flows-hybrid-p"></span><figure id="figure-6">
-          <div class="lang-ascii-art sourcecode" id="section-3.3-2.1">
+<p id="section-3.3-2">Attackers exploit the hybrid pattern by combining the social engineering techniques used to set context for users and tricking users into providing them with access codes sent to their phones. These attacks are very similar to phishing attacks, except that the attacker also has the ability to trigger the authroization request to be sent to the user directly by the Authorization server.<a href="#section-3.3-2" class="pilcrow">¶</a></p>
+<span id="name-attacker-initiated-cross-devi"></span><figure id="figure-6">
+          <div class="lang-ascii-art sourcecode" id="section-3.3-3.1">
 <pre>                              (C) Backchannel Authorization
              +--------------+     Request           +---------------+
              |  Attackers   |&lt;---------------------&gt;|               |
@@ -1802,7 +1803,7 @@ or enter the user code on the authorization device.<a href="#section-3.1-4.5" cl
              |  Device      |&lt;---------------------&gt;|     Server    |
              +--------------+                       |               |
                ^       ^                            |               |
-  (A) Attacker |       | (F) Attacker Forwards      |               |
+  (B) Attacker |       | (F) Attacker Forwards      |               |
       Start    |       |     Access Code            |               |
       Flow     |       |                            |               |
              +--------------+                       |               |
@@ -1812,7 +1813,7 @@ or enter the user code on the authorization device.<a href="#section-3.1-4.5" cl
              |              |                       |               |
              |              |                       |               |
              +--------------+                       |               |
-(B) Attacker    |       ^   (E) User                |               |
+(A) Attacker    |       ^   (E) User                |               |
     Sends       |       |       Send                |               |
     Social      |       |       Access Code         |               |
     Engineering |       |                           |               |
@@ -1827,9 +1828,25 @@ or enter the user code on the authorization device.<a href="#section-3.1-4.5" cl
 </pre>
 </div>
 <figcaption><a href="#figure-6" class="selfRef">Figure 6</a>:
-<a href="#name-cross-device-flows-hybrid-p" class="selfRef">Cross Device Flows (Hybrid Pattern)</a>
+<a href="#name-attacker-initiated-cross-devi" class="selfRef">Attacker Initiated Cross Device Flow Exploit (Hybrid Pattern)</a>
           </figcaption></figure>
-<p id="section-3.3-3">The unauthenticated channel may also be exploited in variations of the above scenario where the user initiates the flow and is then tricked into sending the QR code or user code to the attacker. In these flows, the user is already authenticated and they request a QR code or user code to transfer a session or obtain some other privilege such as joining a device to a network. The attacker then proceeds to exploit the unauthenticated channel by using social engineering techniques to trick the user into initiating a flow and send the QR code or user code to the attacker, which they can then use to obtain the privileges that would have been assigned to the user.<a href="#section-3.3-3" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-3.3-4.1">(A) The attacker sends a social engineering message to prime the user for the authorization request they just received, along with instructions on what to do with the access code they received.<a href="#section-3.3-4.1" class="pilcrow">¶</a>
+</li>
+          <li class="normal" id="section-3.3-4.2">(B) The attacker initiates the protocol on the initiating device (or by mimicking the initiating device) by starting a purchase, adding a device to a network or accessing a service on the initiating device.<a href="#section-3.3-4.2" class="pilcrow">¶</a>
+</li>
+          <li class="normal" id="section-3.3-4.3">(C) The client on the initiating device requests user authorization on the backchannel from the authorization server.<a href="#section-3.3-4.3" class="pilcrow">¶</a>
+</li>
+          <li class="normal" id="section-3.3-4.4">(D) The authorization server sends an access code to the user's device (the access code may be presented as a QR code, or text message).<a href="#section-3.3-4.4" class="pilcrow">¶</a>
+</li>
+          <li class="normal" id="section-3.3-4.5">(E) The user sends the access code to the attacker.<a href="#section-3.3-4.5" class="pilcrow">¶</a>
+</li>
+          <li class="normal" id="section-3.3-4.6">(F) The attacker enters the access code on the Initiating Device.<a href="#section-3.3-4.6" class="pilcrow">¶</a>
+</li>
+          <li class="normal" id="section-3.3-4.7">(G) The Authorization Server issues tokens or grants authorization to the initiating device, which is under the attackers control. The attacker gains access to the users resources and possibly any authorization artefacts like access and refresh tokens.<a href="#section-3.3-4.7" class="pilcrow">¶</a>
+</li>
+        </ul>
+<p id="section-3.3-5">The unauthenticated channel may also be exploited in variations of the above scenario where the user initiates the flow and is then tricked into sending the QR code or user code to the attacker. In these flows, the user is already authenticated and they request a QR code or user code to transfer a session or obtain some other privilege such as joining a device to a network. The attacker then proceeds to exploit the unauthenticated channel by using social engineering techniques to trick the user into initiating a flow and send the QR code or user code to the attacker, which they can then use to obtain the privileges that would have been assigned to the user.<a href="#section-3.3-5" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="examples-of-cross-device-flow-exploits">
@@ -2006,22 +2023,18 @@ a. E.g. it is left ot the user to decide if the QR code, user code or authentica
               <p id="section-5.1.1-2.4.1">Geo-location: Proximity can be established by comparing geo-location information derived from global navigation satellite-system (GNSS) co-ordinates or geolocation lookup of IP addresses and comparing proximity. Due to inaccuracies, this may require restrictions to be at a more granular level (e.g., same city, country, region or continent). Similar to the shared network checks, these checks may be performed by the authorization server or on the users device, provided that the information encoded in a QR code is integrity protected using a digital signature.<a href="#section-5.1.1-2.4.1" class="pilcrow">¶</a></p>
 </li>
           </ul>
-<p id="section-5.1.1-3">Note: There are scenarios that require that an authorization takes place in a different location than the one in which the transaction is authorized. For example, there may be a primary and secondary credit card holder and both can initiate transactions, but only the primary holder can authorize it. There is no guarantee that the primary and secondary holders are in the same location at the time of the authorization. In such cases, proximity may be an indicator of risk and the system may deploy additional controls (e.g., transaction value limits, transaction velocity limits) or use the proximity information as input to a risk management system.<a href="#section-5.1.1-3" class="pilcrow">¶</a></p>
-<p id="section-5.1.1-4">Depending on how the proximity check is performed, an attacker may be
-able to circumvent the protection relatively easily: The attacker can
-use a VPN to simulate a shared network or spoof a GNSS position. For
-example, the attacker can try to request the location of the end-user's
-authorization device through browser APIs and then simulate the same
-location on his initiating device using standard debugging features
-available on many platforms.<a href="#section-5.1.1-4" class="pilcrow">¶</a></p>
+<p id="section-5.1.1-3">Dependig on the risk profile and the threat model in which as system is operating, it mey be neccesary to user mor than one mechanism to establish proximity to raise the bar for any potential attackers.<a href="#section-5.1.1-3" class="pilcrow">¶</a></p>
+<p id="section-5.1.1-4">Note: There are scenarios that require that an authorization takes place in a different location than the one in which the transaction is authorized. For example, there may be a primary and secondary credit card holder and both can initiate transactions, but only the primary holder can authorize it. There is no guarantee that the primary and secondary holders are in the same location at the time of the authorization. In such cases, proximity may be an indicator of risk and the system may deploy additional controls (e.g., transaction value limits, transaction velocity limits) or use the proximity information as input to a risk management system.<a href="#section-5.1.1-4" class="pilcrow">¶</a></p>
+<p id="section-5.1.1-5"><strong>Limitations:</strong> Proximity mechanisms raises the bar for an attack. However, depending on how the proximity check is performed, an attacker may be able to circumvent the protection: The attacker can use a VPN to simulate a shared network or spoof a GNSS position. For example, the attacker can try to request the location of the end-user's authorization device through browser APIs and then simulate the same location on his initiating device using standard debugging features available on many platforms.<a href="#section-5.1.1-5" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="short-lived-timebound-codes">
+<div id="short-lived-timebound-user-codes">
 <section id="section-5.1.2">
-          <h4 id="name-short-lived-timebound-codes">
-<a href="#section-5.1.2" class="section-number selfRef">5.1.2. </a><a href="#name-short-lived-timebound-codes" class="section-name selfRef">Short Lived/Timebound Codes</a>
+          <h4 id="name-short-lived-timebound-user-">
+<a href="#section-5.1.2" class="section-number selfRef">5.1.2. </a><a href="#name-short-lived-timebound-user-" class="section-name selfRef">Short Lived/Timebound User Codes</a>
           </h4>
-<p id="section-5.1.2-1">The impact of an attack can be reduced by making codes short lived. If an attacker obtains a short-lived token, the duration during which the unauthenticated channel can be exploited is reduced, potentially increasing the cost of a successful attack.<a href="#section-5.1.2-1" class="pilcrow">¶</a></p>
+<p id="section-5.1.2-1">The impact of an attack can be reduced by making user codes short lived. If an attacker obtains a short-lived code, the duration during which the unauthenticated channel can be exploited is reduced, potentially increasing the cost of a successful attack.<a href="#section-5.1.2-1" class="pilcrow">¶</a></p>
+<p id="section-5.1.2-2"><strong>Limitations:</strong> There is a practical limit to how short a user code can be valid due to network latency and user experience limitations (time taken to enter a code, or incorrectly entering a code).<a href="#section-5.1.2-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="one-time-or-limited-use-codes">
@@ -2029,7 +2042,8 @@ available on many platforms.<a href="#section-5.1.1-4" class="pilcrow">¶</a></p
           <h4 id="name-one-time-or-limited-use-cod">
 <a href="#section-5.1.3" class="section-number selfRef">5.1.3. </a><a href="#name-one-time-or-limited-use-cod" class="section-name selfRef">One-Time or Limited Use Codes</a>
           </h4>
-<p id="section-5.1.3-1">By enforcing one-time use or limited use of user or QR codes, the authorization server can limit the impact of attacks where the same user code or QR code is sent to multiple victims. One-time use may be achieved by including a nonce or date-stamp in the QR code which is validated by the authorization server when the user scans the QR code.<a href="#section-5.1.3-1" class="pilcrow">¶</a></p>
+<p id="section-5.1.3-1">By enforcing one-time use or limited use of user or QR codes, the authorization server can limit the impact of attacks where the same user code or QR code is sent to multiple victims. One-time use may be achieved by including a nonce or date-stamp in the user code or QR code which is validated by the authorization server when the user scans the QR code against a list of previously issued codes.<a href="#section-5.1.3-1" class="pilcrow">¶</a></p>
+<p id="section-5.1.3-2"><strong>Limitations:</strong> Enforcing one-time use may be difficult in large globally distributed systems with low latency requirements, in which case short lived tokens may be more practical. One-time use codes may also have an impact on the user experience. For example, a user may enter a code, but their session may be interrupted before the access request is completed. If the code is a one-time use code, they would need to restart the session and obtain a new code since they won't be allowed to enter the same code a second time. As a result, it may be practical to allow the same code to be presented a small number of times.<a href="#section-5.1.3-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="unique-codes">
@@ -2038,6 +2052,7 @@ available on many platforms.<a href="#section-5.1.1-4" class="pilcrow">¶</a></p
 <a href="#section-5.1.4" class="section-number selfRef">5.1.4. </a><a href="#name-unique-codes" class="section-name selfRef">Unique Codes</a>
           </h4>
 <p id="section-5.1.4-1">By issuing unique user or QR codes, an authorization server can detect if the same codes are being repeatedly submitted. This may be interpreted as anomalous behavior and the authorizations server may choose to decline issuing access and refresh tokens if it detects the same codes being presented repeatedly. This may be achieved by maintaining a deny list that contains QR codes or user codes that were previously used. The authorization server may use a sliding window eqaul to lifetime of a token if short lived/timebound tokens are used (see <a href="#Short%20Lived/Timebound%20Codes">Short Lived/Timebound Codes</a>). This will limit the size of the deny list.<a href="#section-5.1.4-1" class="pilcrow">¶</a></p>
+<p id="section-5.1.4-2"><strong>Limitations:</strong> Maintaining a deny list of previously redeemed codes, even for a sliding window, may have an impact on the latency of globally distributed systems. One alternative is to segment user codes by geography or region and maintain local deny lists.<a href="#section-5.1.4-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="content-filtering">
@@ -2046,6 +2061,7 @@ available on many platforms.<a href="#section-5.1.1-4" class="pilcrow">¶</a></p
 <a href="#section-5.1.5" class="section-number selfRef">5.1.5. </a><a href="#name-content-filtering" class="section-name selfRef">Content Filtering</a>
           </h4>
 <p id="section-5.1.5-1">Attackers exploit the unauthenticated channel by changing the context of the user code or QR code and then sending a message to a user (e-mail, text, instant messaging etc). By deploying content filtering (e.g., anti-spam filter), these messages can be blocked and prevented from reaching the end-users. It may be possible to fine-tune content filtering solutions to detect artifacts like QR codes or user codes that are being reused in multiple messages to disrupt spray attacks.<a href="#section-5.1.5-1" class="pilcrow">¶</a></p>
+<p id="section-5.1.5-2"><strong>Limitations:</strong> Content filtering may be better suited to interrupt large scale spray attacks since some scenarios may require re-transmission of user, QR and access codes. Content filtering may also be fragmented across multiple communications systems and channels (e-mail, messaging, text etc), making it harder to detect or interrupt attacks that are executed over multiple channels, unless here is a high degree of integration between content filtering systems.<a href="#section-5.1.5-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="detect-and-remediate">
@@ -2054,6 +2070,7 @@ available on many platforms.<a href="#section-5.1.1-4" class="pilcrow">¶</a></p
 <a href="#section-5.1.6" class="section-number selfRef">5.1.6. </a><a href="#name-detect-and-remediate" class="section-name selfRef">Detect and remediate</a>
           </h4>
 <p id="section-5.1.6-1">The authorization server may be able to detect misuse of the codes due to repeated use as described in <a href="#Unique%20Codes">Unique Codes</a>, as an input from a content filtering engine as described in <a href="#Content%20Filtering">Content Filtering</a>, or through other mechanisms such as reports from end users. If an authorization server determines that a user code or QR code is being used in an attack it may choose to invalidate all tokens issued in response to these codes and make that information available through a token introspection endpoint (see <span>[<a href="#RFC7662" class="cite xref">RFC7662</a>]</span>. In addition it may notify resource servers to stop accepting these tokens or to terminate existing sessions associated with these tokens using Continious Access Evaluation Protocol (CAEP) messages <span>[<a href="#CAEP" class="cite xref">CAEP</a>]</span> using the Shared Signals and Events (SSE) <span>[<a href="#SSE" class="cite xref">SSE</a>]</span> framework or an equivalent notification system.<a href="#section-5.1.6-1" class="pilcrow">¶</a></p>
+<p id="section-5.1.6-2"><strong>Limitations:</strong> Detection and remediation requires that resource servers are integrated with security eventing systems or token introspection services. This may not always be practical for existing systems and may need to be targeted to the most critical resource services in an environment.<a href="#section-5.1.6-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="trusted-devices">
@@ -2062,6 +2079,7 @@ available on many platforms.<a href="#section-5.1.1-4" class="pilcrow">¶</a></p
 <a href="#section-5.1.7" class="section-number selfRef">5.1.7. </a><a href="#name-trusted-devices" class="section-name selfRef">Trusted Devices</a>
           </h4>
 <p id="section-5.1.7-1">If an attacker is unable to initiate the protocol, they are unable to obtain a QR code or user code that can be leveraged for the attacks described in this document. By restricting the protocol to only be executed on devices trusted by the authorization server, it prevents attackers from using arbitrary devices, or by mimicking devices to initiate the protocol. Trusted devices include devices that are pre-registered with the authorization server or are subject to device management policies. Device management policies may enforce patching, version updates, on-device anti-malware deployment, revocation status and device location amongst others. Trusted devices may have their identities rooted in hardware (e.g., a TPM or equivalent technology). By only allowing trusted devices to initiate cross-device flows, it requires the attacker to have access to such a device and maintain access in a way that does not result in the device's trust status from being revoked.<a href="#section-5.1.7-1" class="pilcrow">¶</a></p>
+<p id="section-5.1.7-2"><strong>Limitations:</strong> An attacker may still be able to obain access to a trusted device and use it to initiate authorization requests, making it necesary to apply additional controls and integrating with other threat detection and management systems that can detect suspicious behaviour such as repeated requests to initiate authorization or high volume of service activation on the same device.<a href="#section-5.1.7-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="trusted-networks">
@@ -2069,7 +2087,8 @@ available on many platforms.<a href="#section-5.1.1-4" class="pilcrow">¶</a></p
           <h4 id="name-trusted-networks">
 <a href="#section-5.1.8" class="section-number selfRef">5.1.8. </a><a href="#name-trusted-networks" class="section-name selfRef">Trusted Networks</a>
           </h4>
-<p id="section-5.1.8-1">An attacker can be prevented from initiating a cross device flow protocol by only allowing the protocol to be initiated on a trusted network or within a security perimeter (e.g., a corporate network). A trusted network may be defined as a set of IP addresses and joining the network is subject to security controls managed by the network operator, which may include only allowinfg trusted devices on the network, device management, user authentication and physical access policies and systems. By limiting protocol initiation to a specific network, the attacker needs to have access to a device on the network.<a href="#section-5.1.8-1" class="pilcrow">¶</a></p>
+<p id="section-5.1.8-1">An attacker can be prevented from initiating a cross device flow protocol by only allowing the protocol to be initiated on a trusted network or within a security perimeter (e.g., a corporate network). A trusted network may be defined as a set of IP addresses and joining the network is subject to security controls managed by the network operator, which may include only allowing trusted devices on the network, device management, user authentication and physical access policies and systems. By limiting protocol initiation to a specific network, the attacker needs to have access to a device on the network.<a href="#section-5.1.8-1" class="pilcrow">¶</a></p>
+<p id="section-5.1.8-2"><strong>Limitations:</strong> Network level controls may not always be feasible, especially when dealing with consumer scenarios where the network may not be under control of the service provider. Even if it is possible to deploy network level controls, it should be used in  concert with other controls outlined in this document to achieve defence in-depth.<a href="#section-5.1.8-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="limited-scopes">
@@ -2078,6 +2097,7 @@ available on many platforms.<a href="#section-5.1.1-4" class="pilcrow">¶</a></p
 <a href="#section-5.1.9" class="section-number selfRef">5.1.9. </a><a href="#name-limited-scopes" class="section-name selfRef">Limited Scopes</a>
           </h4>
 <p id="section-5.1.9-1">Authorization servers may choose to limit the scopes they include in access tokens issued through cross-device flows where the unauthenticated channel between two devices are susceptible to being exploited. Including limited scopes lessens the impact in case of a successful attack. The decision about which scopes are included may be further refined based on whether the protocol is initiated on a trusted device or the user's location relative to the initiating device.<a href="#section-5.1.9-1" class="pilcrow">¶</a></p>
+<p id="section-5.1.9-2"><strong>Limitations:</strong> Limiting scopes reduces the impact of a compromise, but does not avoid it. It should be used in conjunction with other mitigations described in this document.<a href="#section-5.1.9-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="short-lived-tokens">
@@ -2086,6 +2106,7 @@ available on many platforms.<a href="#section-5.1.1-4" class="pilcrow">¶</a></p
 <a href="#section-5.1.10" class="section-number selfRef">5.1.10. </a><a href="#name-short-lived-tokens" class="section-name selfRef">Short lived tokens</a>
           </h4>
 <p id="section-5.1.10-1">Another mitigation strategy includes limiting the life of the access and refresh tokens. The lifetime can be lengthened or shortened, depending on the user's location, the resources they are trying to access or whether they are using a trusted device. Short lived tokens do not prevent or disrupt the attack, but serve as a remedial mechanism in case the attack succeeded.<a href="#section-5.1.10-1" class="pilcrow">¶</a></p>
+<p id="section-5.1.10-2"><strong>Limitations:</strong> Short lived tokens reduces the time window during which an attacker can benefit from a succesfull attack. This is most effective for access tokens. However, once an attacker obtains a refresh token, they can continue to request new access tokens, as well as refresh tokens. Forcing the expiry of refresh tokens may cause the user to re-authorize an action more frequently, which results in a negative user experience.<a href="#section-5.1.10-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="rate-limits">
@@ -2093,7 +2114,8 @@ available on many platforms.<a href="#section-5.1.1-4" class="pilcrow">¶</a></p
           <h4 id="name-rate-limits">
 <a href="#section-5.1.11" class="section-number selfRef">5.1.11. </a><a href="#name-rate-limits" class="section-name selfRef">Rate Limits</a>
           </h4>
-<p id="section-5.1.11-1">An attacker that engages in a scaled spray attack needs to request a large number of user codes (see exploit example 1) or initiate a large number of authorization requests (see exploit example 2) in a short period of time. An authorization server can apply rate limits to minimize the number of requests it would accept from a client in a limited time period.<a href="#section-5.1.11-1" class="pilcrow">¶</a></p>
+<p id="section-5.1.11-1">An attacker that engages in a scaled spray attack needs to request a large number of user codes (see exploit <a href="#Example%20B1:%20Illicit%20access%20to%20a%20video%20streaming%20service%20(User%20Transferred%20Pattern)">Example B1</a>) or initiate a large number of authorization requests (see exploit <a href="#Example%20B4:%20Illicit%20Transaction%20Authorization%20(Client%20Transferred%20Pattern)">Example B4</a>) in a short period of time. An authorization server can apply rate limits to minimize the number of requests it would accept from a client in a limited time period.<a href="#section-5.1.11-1" class="pilcrow">¶</a></p>
+<p id="section-5.1.11-2"><strong>Limitations:</strong> Rate limits are effective at slowing an attacker down and helps to degrade spray attacks, but does not prevent more targeted attacks that are executed with lower volumes and velocity. Therefor it should be used along with other techniques to provide a defence-in-depth against cross-device attacks.<a href="#section-5.1.11-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="sender-constrained-tokens">
@@ -2102,6 +2124,7 @@ available on many platforms.<a href="#section-5.1.1-4" class="pilcrow">¶</a></p
 <a href="#section-5.1.12" class="section-number selfRef">5.1.12. </a><a href="#name-sender-constrained-tokens" class="section-name selfRef">Sender Constrained Tokens</a>
           </h4>
 <p id="section-5.1.12-1">Sender constrained tokens limit the impact of a successful attack by preventing the tokens from being moved from the device on which the attack was successfully executed. This makes attacks where an attacker gathers a large number of access and refresh tokens on a single device and then sells them for profit more difficult, since the attacker would also have to export the cryptographic keys used to sender constrain the tokens or be able to access them an generate signatures for future use. If the attack is being executed on a trusted device to a device with anti-malware, any attempts to exfiltrate tokens or keys may be detected and the device's trust status may be changed. Using hardware keys for sender constraining tokens will further reduce the ability of the attacker to move tokens to another device.<a href="#section-5.1.12-1" class="pilcrow">¶</a></p>
+<p id="section-5.1.12-2"><strong>Limitations:</strong> Sender constrained tokens, especially sender constrained tokens that require proof-of-posession, raises the bar for executing the attack and and profiting from exfiltrating tokens. The quality of key protection has an impact on the effectiveness of the attack, and although a software proof-of-posession key is better than no proof-of-posession key, an attacker may still exfiltrate the software key. Hardware keys will be harder to exfiltrate, but comes with aditional implementation complexity. An attacker that controls the initiating device may still be able to excercise they key, even if it is in hardware, thus the main protection derived from sender constrianed tokens is preventing them from being moved from the iniating device to another device that can be used to profit from the attack.<a href="#section-5.1.12-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="user-experience">
@@ -2113,6 +2136,7 @@ available on many platforms.<a href="#section-5.1.1-4" class="pilcrow">¶</a></p
 <p id="section-5.1.13-2">It should be clear to the user how to decline the request. To avoid accidental authorization grants, the "decline" option may be the default option or given similar prominence in the user experience as the "grant" option.<a href="#section-5.1.13-2" class="pilcrow">¶</a></p>
 <p id="section-5.1.13-3">This information may be communicated graphically or in a simple message (e.g., "It looks like you are trying to access your files on a digital whiteboard in your city center office. Click here to grant access to your files. If you are not trying to access your files, you should decline this request and notify the security department").<a href="#section-5.1.13-3" class="pilcrow">¶</a></p>
 <p id="section-5.1.13-4">The service may provide out-of-band reinforcement to the user on the context and conditions under which an authorization grant may be requested. For example if the service provider does not send e-mails with QR codes requesting users to grant authorization, this may be reinforced in marketing messages, in-app experiences and through anti-fraud awareness campaigns.<a href="#section-5.1.13-4" class="pilcrow">¶</a></p>
+<p id="section-5.1.13-5"><strong>Limitations:</strong> Improvements to user experience on their own is unlikely to be sufficient and should be used in conjuntion with other controls described in this document.<a href="#section-5.1.13-5" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="authenticated-flow">
@@ -2120,7 +2144,8 @@ available on many platforms.<a href="#section-5.1.1-4" class="pilcrow">¶</a></p
           <h4 id="name-authenticated-flow">
 <a href="#section-5.1.14" class="section-number selfRef">5.1.14. </a><a href="#name-authenticated-flow" class="section-name selfRef">Authenticated flow</a>
           </h4>
-<p id="section-5.1.14-1">By requiring a user to authenticate on the initiating device with a phishing resistant authentication method before initiating a cross-device flow, the server can prevent an attacker from initiating a cross-device flow and obtaining QR codes or user codes. This prevents the attacker from obtaining a QR code or user code that they can use to mislead an unsuspecting user. This requires that the initiating device has sufficient input capabilities to support a phishing resistant authentication mechanism. Note that this does not prevent the attacks described in <a href="#Example%20B5:%20Illicit%20Network%20Join">Example B5: Illicit Network Join</a> and <a href="#Example%20B7:%20Illicit%20Session%20Transfer">Example B7: Illicit Session Transfer</a> and it is recommended that additional mitigations described in this document is used if the cross-device flows are used in scenarios such as <a href="##Example%20A5:%20Add%20a%20device%20to%20a%20network">Example A5: Add a device to a network</a> and <a href="#Example%20A7:%20Transfer%20a%20session">Example A7: Transfer a session</a>.<a href="#section-5.1.14-1" class="pilcrow">¶</a></p>
+<p id="section-5.1.14-1">By requiring a user to authenticate on the initiating device with a phishing resistant authentication method before initiating a cross-device flow, the server can prevent an attacker from initiating a cross-device flow and obtaining QR codes or user codes. This prevents the attacker from obtaining a QR code or user code that they can use to mislead an unsuspecting user. This requires that the initiating device has sufficient input capabilities to support a phishing resistant authentication mechanism, which may in itself negate the need for a cross-device flow.<a href="#section-5.1.14-1" class="pilcrow">¶</a></p>
+<p id="section-5.1.14-2"><strong>Limitations:</strong> Starting with and authenticated does not prevent the attacks described in <a href="#Example%20B5:%20Illicit%20Network%20Join%20(Hybrid%20Pattern)">Example B5: Illicit Network Join</a> and <a href="#Example%20B7:%20Illicit%20session%20transfer%20(Hybrid%20Pattern)">Example B7: Illicit Session Transfer</a> and it is recommended that additional mitigations described in this document is used if the cross-device flows are used in scenarios such as <a href="#Example%20A5:%20Add%20a%20device%20to%20a%20network%20(Hybrid)">Example A5: Add a device to a network</a> and <a href="#Example%20A7:%20Transfer%20a%20session%20(Hybrid)">Example A7: Transfer a session</a>.<a href="#section-5.1.14-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="practical-mitigation-summary">
