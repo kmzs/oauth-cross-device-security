@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2023-03-09T01:47:42.613253+00:00",
+  "timestamp": "2023-03-14T01:20:01.453823+00:00",
   "repo": "oauth-wg/oauth-cross-device-security",
   "labels": [
     {
@@ -386,15 +386,15 @@
       "id": "I_kwDOHK26QM5cq36J",
       "title": "Inconsistency in Example B1",
       "url": "https://github.com/oauth-wg/oauth-cross-device-security/issues/29",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "SECtim",
       "authorAssociation": "NONE",
       "assignees": [],
       "labels": [],
       "body": "Example B1 currently says:\r\n> The e-mail contains a message stating that the streaming service wants to thank them for their loyal support and by scanning the QR code, they will be able to add a bonus device to their account for no charge. One of the recipients open the e-mail and scan the QR code to register for early access to premium content.\r\n\r\nI.e., at first, the e-mail sent by the attacker mentions a \"bonus device\", whereas the second sentence talks about \"premium content\".\r\nIf this is intentional, I suggest adding a few words to explain the relationship between an additional device and premium content.",
       "createdAt": "2023-01-24T10:50:38Z",
-      "updatedAt": "2023-01-24T10:50:38Z",
-      "closedAt": null,
+      "updatedAt": "2023-03-13T16:42:55Z",
+      "closedAt": "2023-03-13T16:42:55Z",
       "comments": []
     },
     {
@@ -402,15 +402,15 @@
       "id": "I_kwDOHK26QM5csD6p",
       "title": "\"Unique Codes\" mitigation: Invalidation of issued tokens?",
       "url": "https://github.com/oauth-wg/oauth-cross-device-security/issues/31",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "SECtim",
       "authorAssociation": "NONE",
       "assignees": [],
       "labels": [],
       "body": "Currently, the section on \"Unique Codes\" mitigation says\r\n> This may be interpreted as anomalous behavior and the authorizations server may choose to decline issuing access and refresh tokens if it detects the same codes being presented repeatedly. \r\n\r\nMy understanding of this formulation is that an AS should not issue more tokens when it detects repeated code usages.\r\nHowever, it might make sense to also mention (or clarify if that is what's referred to here) that ASs can/should invalidate any access or refresh tokens issued \"for\" repeatedly used codes.",
       "createdAt": "2023-01-24T14:08:02Z",
-      "updatedAt": "2023-01-24T14:11:32Z",
-      "closedAt": null,
+      "updatedAt": "2023-03-13T17:13:54Z",
+      "closedAt": "2023-03-13T17:13:54Z",
       "comments": [
         {
           "author": "SECtim",
@@ -426,7 +426,7 @@
       "id": "I_kwDOHK26QM5fD3B4",
       "title": "Add Tim as Contributor",
       "url": "https://github.com/oauth-wg/oauth-cross-device-security/issues/34",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "danielfett",
       "authorAssociation": "MEMBER",
       "assignees": [
@@ -435,16 +435,24 @@
       "labels": [],
       "body": "",
       "createdAt": "2023-02-22T10:26:32Z",
-      "updatedAt": "2023-02-22T10:26:33Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2023-03-13T16:29:04Z",
+      "closedAt": "2023-03-13T16:29:04Z",
+      "comments": [
+        {
+          "author": "PieterKas",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Added Tim (see: https://github.com/oauth-wg/oauth-cross-device-security/commit/ec1694724b452c97824b441df53982442e3a0ae5)",
+          "createdAt": "2023-03-13T16:29:01Z",
+          "updatedAt": "2023-03-13T16:29:01Z"
+        }
+      ]
     },
     {
       "number": 35,
       "id": "I_kwDOHK26QM5fD4ez",
       "title": "Fix document history",
       "url": "https://github.com/oauth-wg/oauth-cross-device-security/issues/35",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "danielfett",
       "authorAssociation": "MEMBER",
       "assignees": [
@@ -453,41 +461,65 @@
       "labels": [],
       "body": "",
       "createdAt": "2023-02-22T10:30:07Z",
-      "updatedAt": "2023-02-22T10:30:08Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2023-03-13T16:41:33Z",
+      "closedAt": "2023-03-13T16:41:33Z",
+      "comments": [
+        {
+          "author": "PieterKas",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Fixed in the following commit: https://github.com/oauth-wg/oauth-cross-device-security/commit/4a8eb010b2ac0eabc802412c74bcf2cd21cfb67d",
+          "createdAt": "2023-03-13T16:41:22Z",
+          "updatedAt": "2023-03-13T16:41:22Z"
+        }
+      ]
     },
     {
       "number": 36,
       "id": "I_kwDOHK26QM5fD82s",
       "title": "Restructure protocol description ",
       "url": "https://github.com/oauth-wg/oauth-cross-device-security/issues/36",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "PieterKas",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "Make a distinction between CIBA-like flows and DCF-like flows.",
       "createdAt": "2023-02-22T10:42:39Z",
-      "updatedAt": "2023-02-22T10:42:39Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2023-03-13T11:12:45Z",
+      "closedAt": "2023-03-13T11:12:45Z",
+      "comments": [
+        {
+          "author": "PieterKas",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Added three different patterns - user transferred, client transferred and hybrid.\r\n\r\nhttps://github.com/oauth-wg/oauth-cross-device-security/commit/3ac216870bb08da432556cdccb6335767a31278f",
+          "createdAt": "2023-03-13T11:12:45Z",
+          "updatedAt": "2023-03-13T11:12:45Z"
+        }
+      ]
     },
     {
       "number": 37,
       "id": "I_kwDOHK26QM5fD-xo",
       "title": "Add information on limits of countermeasure efficiency",
       "url": "https://github.com/oauth-wg/oauth-cross-device-security/issues/37",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "PieterKas",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "None of the countermeasures is a \"fix-all\", outline the limitations for when this won't work.",
       "createdAt": "2023-02-22T10:48:18Z",
-      "updatedAt": "2023-02-22T10:48:18Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2023-03-13T16:28:26Z",
+      "closedAt": "2023-03-13T16:28:26Z",
+      "comments": [
+        {
+          "author": "PieterKas",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Fixed in this commit: https://github.com/oauth-wg/oauth-cross-device-security/commit/ec1694724b452c97824b441df53982442e3a0ae5",
+          "createdAt": "2023-03-13T16:28:16Z",
+          "updatedAt": "2023-03-13T16:28:16Z"
+        }
+      ]
     }
   ],
   "pulls": [
@@ -1286,25 +1318,33 @@
       "id": "PR_kwDOHK26QM5Iaftn",
       "title": "Fix some typos",
       "url": "https://github.com/oauth-wg/oauth-cross-device-security/pull/30",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "SECtim",
       "authorAssociation": "NONE",
       "assignees": [],
       "labels": [],
       "body": "Came across a few typos while reading the draft. As I am still reading, I consider this PR to be a draft.",
       "createdAt": "2023-01-24T10:59:06Z",
-      "updatedAt": "2023-02-21T10:10:29Z",
+      "updatedAt": "2023-03-13T17:07:29Z",
       "baseRepository": "oauth-wg/oauth-cross-device-security",
       "baseRefName": "main",
-      "baseRefOid": "91561363002c4ce6f7b795a11594b990a56c8d01",
+      "baseRefOid": "4a8eb010b2ac0eabc802412c74bcf2cd21cfb67d",
       "headRepository": "SECtim/oauth-cross-device-security",
       "headRefName": "typos",
-      "headRefOid": "9495511d3dabee6d787bc40dce346d47c0f51b38",
-      "closedAt": null,
+      "headRefOid": "b2952a4f96117486adc79ae8ab912f66ab9ffebe",
+      "closedAt": "2023-03-13T17:07:28Z",
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
-      "comments": [],
+      "comments": [
+        {
+          "author": "PieterKas",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Merged",
+          "createdAt": "2023-03-13T17:07:28Z",
+          "updatedAt": "2023-03-13T17:07:28Z"
+        }
+      ],
       "reviews": [
         {
           "id": "PRR_kwDOHK26QM5N6Nbj",
@@ -1326,25 +1366,33 @@
       "id": "PR_kwDOHK26QM5KbxDV",
       "title": "Fix Issue #29",
       "url": "https://github.com/oauth-wg/oauth-cross-device-security/pull/32",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "danielfett",
       "authorAssociation": "MEMBER",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2023-02-21T14:12:03Z",
-      "updatedAt": "2023-02-22T08:10:42Z",
+      "updatedAt": "2023-03-13T17:13:34Z",
       "baseRepository": "oauth-wg/oauth-cross-device-security",
       "baseRefName": "main",
-      "baseRefOid": "91561363002c4ce6f7b795a11594b990a56c8d01",
+      "baseRefOid": "4a8eb010b2ac0eabc802412c74bcf2cd21cfb67d",
       "headRepository": "oauth-wg/oauth-cross-device-security",
       "headRefName": "danielfett/fix-29",
-      "headRefOid": "d25cc2b655dd945080f818ad889d7bc63ad377b5",
-      "closedAt": null,
+      "headRefOid": "f8bb8fce18687e8dbcbcf82320401c0d6117aa9d",
+      "closedAt": "2023-03-13T17:13:17Z",
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
-      "comments": [],
+      "comments": [
+        {
+          "author": "PieterKas",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Merged",
+          "createdAt": "2023-03-13T17:13:34Z",
+          "updatedAt": "2023-03-13T17:13:34Z"
+        }
+      ],
       "reviews": []
     },
     {
@@ -1352,25 +1400,33 @@
       "id": "PR_kwDOHK26QM5KbxJ5",
       "title": "Fix Issue #31",
       "url": "https://github.com/oauth-wg/oauth-cross-device-security/pull/33",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "danielfett",
       "authorAssociation": "MEMBER",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2023-02-21T14:12:22Z",
-      "updatedAt": "2023-02-22T08:10:30Z",
+      "updatedAt": "2023-03-13T17:11:02Z",
       "baseRepository": "oauth-wg/oauth-cross-device-security",
       "baseRefName": "main",
-      "baseRefOid": "91561363002c4ce6f7b795a11594b990a56c8d01",
+      "baseRefOid": "4a8eb010b2ac0eabc802412c74bcf2cd21cfb67d",
       "headRepository": "oauth-wg/oauth-cross-device-security",
       "headRefName": "danielfett/fix-31",
-      "headRefOid": "8a6cfeae958af084568bae197857b6b07a2398c4",
-      "closedAt": null,
+      "headRefOid": "717e65f9005bec94f85458f60971960b4ee370c5",
+      "closedAt": "2023-03-13T17:11:02Z",
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
-      "comments": [],
+      "comments": [
+        {
+          "author": "PieterKas",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Merged",
+          "createdAt": "2023-03-13T17:10:57Z",
+          "updatedAt": "2023-03-13T17:10:57Z"
+        }
+      ],
       "reviews": []
     }
   ]
